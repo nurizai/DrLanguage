@@ -12,11 +12,10 @@ export default function Filter() {
 }
 
 const StyledFilter = styled.div`
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100vw;
-  height: 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #4882BB;
 `
 

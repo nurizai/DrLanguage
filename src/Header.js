@@ -9,7 +9,7 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.nav`
-  width: 100vw;
+  display: flex;
   height: 48px;
   background-color: #1B456D;
 `

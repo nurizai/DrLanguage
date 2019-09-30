@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 export default function Filter() {
   return (
-    <StyledFilter>
-      <StyledFilterArea>Filtern nach Spezialist</StyledFilterArea>
-      <StyledFilterArea>Filtern nach Sprache</StyledFilterArea>
-      <StyledFilterArea>Filtern nach Standort</StyledFilterArea>
-    </StyledFilter>
+    <FilterStyled>
+      <FilterAreaStyled>Filtern nach Spezialist</FilterAreaStyled>
+      <FilterAreaStyled>Filtern nach Sprache</FilterAreaStyled>
+      <FilterAreaStyled>Filtern nach Standort</FilterAreaStyled>
+    </FilterStyled>
   )
 }
 
-const StyledFilter = styled.div`
+const FilterStyled = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@ const StyledFilter = styled.div`
   background-color: #4882BB;
 `
 
-const StyledFilterArea = styled.div`
+const FilterAreaStyled = styled.div`
   text-transform: uppercase;
   color: white;
   font-family: Helvetica, sans-serif;

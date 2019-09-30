@@ -1,13 +1,19 @@
 import React from 'react';
 import Header from './Header'
 import styled from 'styled-components'
-import StyledFilter from './Filter'
+import FilterStyled from './Filter'
+import Cards from './Cards'
+import cardData from './cards.json'
 
 function App() {
   return (
     <AppStyled>
       <Header></Header>
-      <StyledFilter></StyledFilter>
+      <FilterStyled></FilterStyled>
+      <Cards></Cards>
+      <Cards></Cards>
+      <Cards></Cards>
+      <Cards></Cards>
     </AppStyled>
   );
 }

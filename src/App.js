@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header'
 import styled from 'styled-components'
 import FilterStyled from './Filter'
@@ -6,22 +6,30 @@ import Cards from './Cards'
 import cardData from './cards.json'
 
 function App() {
+  const [cards, setCards] = useState(cardData)
   return (
-    <AppStyled>
+    <>
       <Header></Header>
       <FilterStyled></FilterStyled>
-      <Cards></Cards>
-      <Cards></Cards>
-      <Cards></Cards>
-      <Cards></Cards>
-    </AppStyled>
+      <AppStyled>
+        {renderCards()}
+      </AppStyled>
+    </>
   );
+
+  function renderCards() {
+    return cards.map((card, index) => (
+      <Cards
+        key={index}
+        {...card}
+        />
+    ))
+  }
 }
 
 const AppStyled = styled.div`
   display: grid;
-  grid-template-rows: 48px auto;
-  position: fixed;
+  gap: 10px;
   left: 0;
   right: 0;
   top: 0;

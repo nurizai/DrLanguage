@@ -17,5 +17,11 @@
   "bereich": "Allgemeinarzt",
   "adresse": "Wendemuthstraße 17, 22041 Hamburg",
   "tags": ["deutsch", "englisch", "arabisch"]
+},
+{
+  "name": "Dr. Lanz Miller",
+  "bereich": "Zahnarzt",
+  "adresse": "Wendemuthstraße 45, 22041 Hamburg",
+  "tags": ["deutsch", "englisch", "französisch"]
 }
 ]

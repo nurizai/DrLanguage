@@ -4,23 +4,32 @@ import styled from 'styled-components'
 export default function Filter() {
   return (
     <FilterStyled>
-      <FilterAreaStyled>Filtern nach Spezialist</FilterAreaStyled>
-      <FilterAreaStyled>Filtern nach Sprache</FilterAreaStyled>
-      <FilterAreaStyled>Filtern nach Standort</FilterAreaStyled>
+      <FilterFirstAreaStyled>Filtern nach Spezialist</FilterFirstAreaStyled>
+      <FilterSecondAreaStyled>Filtern nach Sprache</FilterSecondAreaStyled>
+      <FilterThirdAreaStyled>Filtern nach Standort</FilterThirdAreaStyled>
     </FilterStyled>
   )
 }
 
 const FilterStyled = styled.div`
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #4882BB;
+  display: grid;
+  height: 42px;
+  grid-template-columns: 1fr 1fr 1fr;
 `
 
-const FilterAreaStyled = styled.div`
+const FilterFirstAreaStyled = styled.div`
+  display: grid;
   text-transform: uppercase;
   color: white;
-  font-family: Helvetica, sans-serif;
-`
+  background-color: #4882BB;
+  `
+const FilterSecondAreaStyled = styled.div`
+  text-transform: uppercase;
+  color: white;
+  background-color: #316EA9;
+  `
+const FilterThirdAreaStyled = styled.div`
+  text-transform: uppercase;
+  color: white;
+  background-color: #21598F;
+  `

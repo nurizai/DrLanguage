@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import Tag from './Tag'
 
 
 export default function Cards({
   name,
   bereich,
   adresse,
+  tags,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -16,24 +18,55 @@ export default function Cards({
   function renderDetails() {
     return (
       <>
-        <div>{name}</div>
+        <div>{bereich}</div>
+        <div>{adresse}</div>
+        {renderTags()}
       </>
     )
   }
   return (
-    <CardStyled>
-      <h2 onClick={() => toggleCollapsed()}>{name}</h2>
-      {collapsed || renderDetails()}
-      <p>Allgemeinarzt</p>
-      <p>Hamburg</p>
-    </CardStyled>
+    <FullCardStyled>
+      <CardStyled>
+        <h2 onClick={() => toggleCollapsed()}>{name}</h2>
+        {collapsed || renderDetails()}
+      </CardStyled>
+      <CardButton>
+        <CardButtonLeftStyled/>
+        <CardButtonRightStyled/>
+      </CardButton>
+    </FullCardStyled>
   )
+
+  function renderTags() {
+    return tags.map(tag => <Tag key={tag} text={tag} />)
+  }
 }
 
 const CardStyled = styled.section`
+  box-sizing: border-box;
+  border-radius: 10px 10px 0 0;
   position: relative;
   background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 10px 10px #0002;
+  padding: 10px;
+`
+const CardButton = styled.div`
+display: inline;
+`
+
+const CardButtonLeftStyled = styled.button`
+width: 50%;
+height: 48px;
+background: #FFFFFF;
+border-radius: 0 0 0 8px;
+`
+
+const CardButtonRightStyled = styled.button`
+width: 50%;
+height: 48px;
+background: #03A87C;
+border-radius: 0 0 8px 0;
+`
+
+const FullCardStyled = styled.div`
+margin: 10px;
 `

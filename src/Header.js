@@ -9,8 +9,9 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.nav`
-  display: flex;
-  height: 48px;
+  display: grid;
+  grid-auto-columns: auto;
+  height: 30px;
   background-color: #1B456D;
 `
 

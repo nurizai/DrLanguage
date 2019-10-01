@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import FilterTags from './FilterTags'
 import Tag from './Tag';
 
-export default function Filter({ filtertags }) {
+export default function Filter({ filtertags, test }) {
   return (
     <FilterStyled>
-      <FilterButtons filtertags={filtertags}></FilterButtons>
+      <FilterButtons filtertags={filtertags} test={test}></FilterButtons>
     </FilterStyled>
   )
 }
 
 function FilterButtons({
   filtertags,
+  test,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -23,9 +23,10 @@ function FilterButtons({
   return (
     <>
       <FilterFirstAreaStyled onClick={() => toggleCollapsed()}>Filter nach Sprache</FilterFirstAreaStyled>
-      <FilterSecondAreaStyled>Filter nach Spezialist</FilterSecondAreaStyled>
+      <FilterSecondAreaStyled onClick={() => toggleCollapsed()}>Filter nach Spezialist</FilterSecondAreaStyled>
       <FilterThirdAreaStyled>Filter nach Standort</FilterThirdAreaStyled>
       {collapsed && <Popup>{filtertags.map(tag => <Tag text={tag} />)}</Popup>}
+      {collapsed && <Popup>{test.map(tag => <Tag text={tag} />)}</Popup>}
     </>
   )
 }

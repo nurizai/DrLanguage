@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import Filter from './Filter'
 import Cards from './Cards'
 import cardData from './cards.json'
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <Filter filtertags={getFilterTags()}></Filter>
+      <Filter filtertags={getFilterTags()} test={getSpezialistTags()}></Filter>
       <AppStyled>
         {renderCards()}
       </AppStyled>
@@ -33,7 +33,17 @@ function App() {
     }, new Set()))
     return filtertags
   }
+
+  function getSpezialistTags() {
+    const test = Array.from(cards.reduce((pre, acc) => {
+      acc.tags.forEach(tag => pre.add(tag))
+      return pre
+    }, new Set()))
+    return test
+  }
 }
+
+
 
 const AppStyled = styled.div`
   display: grid;

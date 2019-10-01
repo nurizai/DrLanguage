@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header'
 import styled from 'styled-components'
-import FilterStyled from './Filter'
+import Filter from './Filter'
 import Cards from './Cards'
 import cardData from './cards.json'
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <FilterStyled></FilterStyled>
+      <Filter filtertags={getFilterTags()}></Filter>
       <AppStyled>
         {renderCards()}
       </AppStyled>
@@ -24,6 +24,14 @@ function App() {
         {...card}
         />
     ))
+  }
+
+  function getFilterTags() {
+    const filtertags = Array.from(cards.reduce((pre, acc) => {
+      acc.tags.forEach(tag => pre.add(tag))
+      return pre
+    }, new Set()))
+    return filtertags
   }
 }
 

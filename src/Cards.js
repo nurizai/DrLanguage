@@ -38,16 +38,38 @@ export default function Cards({
   )
 
   function renderTags() {
-    return tags.map(tag => <Tag key={tag} text={tag} />)
+    return (
+      <TagListStyled>
+        {tags.map(tag => <Tag key={tag} text={tag} />)}
+      </TagListStyled>
+    )
   }
 }
 
+const TagListStyled = styled.ul`
+  list-style-type: none;
+  padding: 0 10px;
+`
+
 const CardStyled = styled.section`
-  box-sizing: border-box;
-  border-radius: 10px 10px 0 0;
-  position: relative;
+  display: grid;
+  grid-template-rows: auto 48px;
+  border-radius: 8px 8px 0 0;
   background: white;
   padding: 10px;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.10);
+
+  > div {
+    margin: 5px 10px 5px 10px;
+    font-family: Helvetica;
+    font-size: 0.9rem;
+  }
+
+  > h2 {
+    margin: 10px auto 5px 10px;
+    font-family: Helvetica;
+    font-size: 1rem;
+  }
 `
 const CardButton = styled.div`
 display: inline;
@@ -68,5 +90,5 @@ border-radius: 0 0 8px 0;
 `
 
 const FullCardStyled = styled.div`
-margin: 10px;
+margin: 10px 10px 5px 10px;
 `

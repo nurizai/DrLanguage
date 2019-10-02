@@ -2,17 +2,16 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag';
 
-export default function Filter({ filtertags, test }) {
+export default function Filter({ filtertags }) {
   return (
     <FilterStyled>
-      <FilterButtons filtertags={filtertags} test={test}></FilterButtons>
+      <FilterButtonLanguage filtertags={filtertags} ></FilterButtonLanguage>
     </FilterStyled>
   )
 }
 
-function FilterButtons({
+function FilterButtonLanguage({
   filtertags,
-  test,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -23,29 +22,26 @@ function FilterButtons({
   return (
     <>
       <FilterFirstAreaStyled onClick={() => toggleCollapsed()}>Filter nach Sprache</FilterFirstAreaStyled>
-      <FilterSecondAreaStyled onClick={() => toggleCollapsed()}>Filter nach Spezialist</FilterSecondAreaStyled>
-      <FilterThirdAreaStyled>Filter nach Standort</FilterThirdAreaStyled>
-      {collapsed && <Popup>{filtertags.map(tag => <Tag text={tag} />)}</Popup>}
-      {collapsed && <Popup>{test.map(tag => <Tag text={tag} />)}</Popup>}
+      {collapsed && <LanguagePopup>{filtertags.map(tag => <Tag text={tag} />)}</LanguagePopup>}
     </>
   )
 }
 
-const Popup = styled.div`
+const LanguagePopup = styled.div`
   box-sizing: border-box;
   padding: 10px;
   position: absolute;
   width: 100vw;
   height: minmax(25vh);
   background-color: #4882BB;
-  top: 72px;
+  top: 60px;
   z-index: 1000;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 5px 5px;
 `
 
 const FilterStyled = styled.div`
   display: grid;
-  height: 42px;
+  font-size: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr;
 `
 

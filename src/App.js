@@ -2,29 +2,20 @@ import React, { useState } from 'react';
 import Header from './Header'
 import styled from 'styled-components/macro'
 import Filter from './Filter'
-import Cards from './Cards'
 import cardData from './cards.json'
+import CardList from './CardList';
+
 
 function App() {
   const [cards, setCards] = useState(cardData)
   return (
-    <>
-      <Header></Header>
-      <Filter filtertags={getFilterTags()} test={getSpezialistTags()}></Filter>
-      <AppStyled>
-        {renderCards()}
-      </AppStyled>
-    </>
+    <AppStyled>
+      <Header/>
+      <Filter filtertags={getFilterTags()}></Filter>
+      <CardList/>
+    </AppStyled>
   );
 
-  function renderCards() {
-    return cards.map((card, index) => (
-      <Cards
-        key={index}
-        {...card}
-        />
-    ))
-  }
 
   function getFilterTags() {
     const filtertags = Array.from(cards.reduce((pre, acc) => {
@@ -33,21 +24,13 @@ function App() {
     }, new Set()))
     return filtertags
   }
-
-  function getSpezialistTags() {
-    const test = Array.from(cards.reduce((pre, acc) => {
-      acc.tags.forEach(tag => pre.add(tag))
-      return pre
-    }, new Set()))
-    return test
-  }
 }
-
 
 
 const AppStyled = styled.div`
   display: grid;
-  gap: 10px;
+  grid-template-rows: 24px 36px auto;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;

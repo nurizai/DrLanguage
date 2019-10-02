@@ -2,16 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function Header() {
-  return (
-    <HeaderStyled>
-    </HeaderStyled>
-  )
+  return <HeaderStyled/>
 }
 
-const HeaderStyled = styled.nav`
-  display: grid;
-  grid-auto-columns: auto;
-  height: 30px;
+const HeaderStyled = styled.div`
+  height: 24px;
   background-color: #1B456D;
 `
 

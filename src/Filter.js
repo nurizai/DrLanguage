@@ -1,27 +1,78 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import Tag from './Tag';
 
-export default function Filter() {
+export default function Filter({ filtertags }) {
   return (
-    <StyledFilter>
-      <StyledFilterArea>Filtern nach Spezialist</StyledFilterArea>
-      <StyledFilterArea>Filtern nach Sprache</StyledFilterArea>
-      <StyledFilterArea>Filtern nach Standort</StyledFilterArea>
-    </StyledFilter>
+    <FilterStyled>
+      <FilterButtonLanguage filtertags={filtertags} ></FilterButtonLanguage>
+    </FilterStyled>
   )
 }
 
-const StyledFilter = styled.div`
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
+function FilterButtonLanguage({
+  filtertags,
+}) {
+  const [collapsed, setCollapsed] = useState(false)
+
+  function toggleCollapsed() {
+    setCollapsed(!collapsed)
+  }
+
+  return (
+    <>
+      <FilterFirstAreaStyled onClick={() => toggleCollapsed()}>Filter nach Sprache</FilterFirstAreaStyled>
+      {collapsed && <LanguagePopup>{filtertags.map(tag => <Tag key={tag} text={tag} />)}</LanguagePopup>}
+      <FilterSecondAreaStyled>Filter nach Spezialist</FilterSecondAreaStyled>
+      <FilterThirdAreaStyled>Filter nach Standort</FilterThirdAreaStyled>
+    </>
+  )
+}
+
+const LanguagePopup = styled.div`
+  box-sizing: border-box;
+  padding: 10px;
+  position: absolute;
   width: 100vw;
-  height: 40px;
-  background-color: #4882BB;
+  height: minmax(25vh);
+  background-color: rgba(72,130,187,0.95) ;
+  top: 60px;
+  z-index: 1000;
+  border-radius: 0 0 5px 5px;
 `
 
-const StyledFilterArea = styled.div`
+const LocationPopup = styled.div`
+  box-sizing: border-box;
+  padding: 10px;
+  position: absolute;
+  width: 100vw;
+  height: minmax(25vh);
+  background-color: #316EA9;
+  top: 60px;
+  z-index: 1000;
+  border-radius: 0 0 5px 5px;
+  `
+
+
+const FilterStyled = styled.div`
+  text-align: center;
+  display: grid;
+  font-size: 0.8rem;
+  grid-template-columns: 1fr 1fr 1fr;
+`
+
+const FilterFirstAreaStyled = styled.div`
   text-transform: uppercase;
   color: white;
-  font-family: Helvetica, sans-serif;
-`
+  background-color: #4882BB;
+  `
+const FilterSecondAreaStyled = styled.div`
+  text-transform: uppercase;
+  color: white;
+  background-color: #316EA9;
+  `
+const FilterThirdAreaStyled = styled.div`
+  text-transform: uppercase;
+  color: white;
+  background-color: #21598F;
+  `

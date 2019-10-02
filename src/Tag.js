@@ -10,7 +10,7 @@ export default function Tag({ text }) {
 const TagStyled = styled.li`
   display: inline-block;
   font-family: Helvetica;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   padding: 10px 10px;
   background: #235789;
   color: white;

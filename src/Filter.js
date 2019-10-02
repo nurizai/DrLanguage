@@ -22,7 +22,9 @@ function FilterButtonLanguage({
   return (
     <>
       <FilterFirstAreaStyled onClick={() => toggleCollapsed()}>Filter nach Sprache</FilterFirstAreaStyled>
-      {collapsed && <LanguagePopup>{filtertags.map(tag => <Tag text={tag} />)}</LanguagePopup>}
+      {collapsed && <LanguagePopup>{filtertags.map(tag => <Tag key={tag} text={tag} />)}</LanguagePopup>}
+      <FilterSecondAreaStyled>Filter nach Spezialist</FilterSecondAreaStyled>
+      <FilterThirdAreaStyled>Filter nach Standort</FilterThirdAreaStyled>
     </>
   )
 }
@@ -33,13 +35,27 @@ const LanguagePopup = styled.div`
   position: absolute;
   width: 100vw;
   height: minmax(25vh);
-  background-color: #4882BB;
+  background-color: rgba(72,130,187,0.95) ;
   top: 60px;
   z-index: 1000;
   border-radius: 0 0 5px 5px;
 `
 
+const LocationPopup = styled.div`
+  box-sizing: border-box;
+  padding: 10px;
+  position: absolute;
+  width: 100vw;
+  height: minmax(25vh);
+  background-color: #316EA9;
+  top: 60px;
+  z-index: 1000;
+  border-radius: 0 0 5px 5px;
+  `
+
+
 const FilterStyled = styled.div`
+  text-align: center;
   display: grid;
   font-size: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr;

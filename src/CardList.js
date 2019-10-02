@@ -20,5 +20,5 @@ export default function CardList() {
 }
 
 const CardListStyled = styled.section`
-overflow-y: scroll;
+  overflow-y: scroll;
 `

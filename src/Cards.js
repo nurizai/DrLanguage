@@ -7,8 +7,8 @@ import phone from './icons/phone.svg'
 
 export default function Cards({
   name,
-  bereich,
-  adresse,
+  specialized,
+  address,
   tags,
 }) {
   const [collapsed, setCollapsed] = useState(false)
@@ -20,8 +20,8 @@ export default function Cards({
   function renderDetails() {
     return (
       <>
-        <div>{bereich}</div>
-        <div>{adresse}</div>
+        <div>{specialized}</div>
+        <div>{address}</div>
         {renderTags()}
 
       </>
@@ -71,32 +71,33 @@ const CardStyled = styled.section`
     margin: 10px auto 20px 10px;
     font-family: Helvetica;
     font-size: 1rem;
+    font-weight: 525;
   }
 `
 const CardButton = styled.div`
-display: inline;
+  display: inline;
 `
 
 const CardButtonLeftStyled = styled.button`
-width: 50%;
-height: 40px;
-background: #83909f;
-border-radius: 0 0 0 8px;
-border: 0 solid #83909f;
+  width: 50%;
+  height: 40px;
+  background: #83909f;
+  border-radius: 0 0 0 8px;
+  border: 0 solid #83909f;
 `
 
 const CardButtonRightStyled = styled.button`
-width: 50%;
-height: 40px;
-background: #90ccc2;
-border-radius: 0 0 8px 0;
-border: 0 solid #90ccc2;
+  width: 50%;
+  height: 40px;
+  background: #90ccc2;
+  border-radius: 0 0 8px 0;
+  border: 0 solid #90ccc2;
 `
 
 const FullCardStyled = styled.div`
-grid: grid;
-grid-template-rows: 1fr auto;
-margin: 10px 10px 5px 10px;
-box-shadow: 0 0 4px 0 rgba(0,0,0,0.50);
-border-radius: 8px;
+  grid: grid;
+  grid-template-rows: 1fr auto;
+  margin: 10px 10px 5px 10px;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.50);
+  border-radius: 8px;
 `

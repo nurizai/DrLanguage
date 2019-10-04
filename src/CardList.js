@@ -4,7 +4,7 @@ import cardData from './cards.json'
 import styled from 'styled-components'
 
 export default function CardList() {
-
+// eslint-disable-next-line
   const [cards, setCards] = useState(cardData)
 
   return (

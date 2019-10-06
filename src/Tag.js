@@ -7,7 +7,7 @@ export default function Tag({ tags }) {
   )
 }
 
-const TagStyled = styled.li`
+const TagStyled = styled.div`
   display: inline-block;
   font-family: Helvetica;
   font-size: 0.6rem;
@@ -17,4 +17,5 @@ const TagStyled = styled.li`
   border-radius: 5px;
   text-transform: uppercase;
   margin: 5px 5px 0 0;
+  cursor: pointer;
 `

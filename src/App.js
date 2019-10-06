@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
+import Homepage from './Homepage'
 import Filter from './Filter'
 import cardData from './cards.json'
-import CardList from './CardList';
 import Navigation from './Navigation'
 
 
@@ -15,9 +15,9 @@ function App() {
     <Router>
       <AppStyled>
         <Switch>
-          <Route exact path="/" render={() => <><Filter filtertags={getFilterTags()} specialized={getSpecializedTags()} address={getLocationTags()}></Filter><CardList/></>} />
-          <Route path="/bookmarked" render={() => <><h1>Bookmarked</h1><p>Text here...</p></>} />
-          <Route path="/settings" render={() => <><h1>Settings</h1><p>Text here...</p></>} />
+          <Route exact path="/" render={() => <Homepage />} />
+          <Route path="/bookmarked" render={() => <h1>Bookmarked</h1>} />
+          <Route path="/settings" render={() => <h1>Settings</h1>} />
         </Switch>
         <Navigation />
       </AppStyled>
@@ -53,10 +53,7 @@ function App() {
 }
 
 
-
 const AppStyled = styled.div`
-  display: grid;
-  grid-template-rows: 48px auto 48px;
   position: fixed;
   left: 0;
   right: 0;

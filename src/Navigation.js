@@ -13,6 +13,10 @@ export default function Header() {
 }
 
 const FooterStyled = styled.div`
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  width: 100vw;
   text-align: center;
   display: grid;
   font-size: 0.8rem;

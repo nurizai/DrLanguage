@@ -2,28 +2,34 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag'
 
-export default function FilterBar() {
+export default function FilterBar({ updateFilterOptions }) {
   const cards = require('./cards.json')
 
   const [popupCollapsed, setPopupCollapsed] = useState(false)
   const [popupTags, setPopupTags] = useState([])
+  const [filterKey, setFilterKey] = useState('')
 
   // Close popup whenever user clicks somewhere else in the app
-  document.body.addEventListener('click', (event) => {
-    event.target.dataset.filter === 'option' || setPopupCollapsed(false)
-  });
+  document.body.addEventListener('click', (e) => {
+    e.target.dataset.filter === 'option' || setPopupCollapsed(false)
+  })
 
   return (
     <FilterBarStyled>
-      <FilterAreaStyled onClick={() => openPopup('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => openPopup('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => openPopup('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
-      {popupCollapsed && <Popup><Tag handleOnClick={() => handleOnClick()} key='all' tags='Alle' /><Tag handleOnClick={() => handleOnClick()} tags={popupTags} /></Popup>}
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
+      {popupCollapsed && <Popup><Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' /><Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} /></Popup>}
     </FilterBarStyled>
   )
 
-  function handleOnClick() {
-    console.log('yoyoyo')
+  function handleFilterAreaClick(type) {
+    setFilterKey(type)
+    openPopup(type)
+  }
+
+  function handleTagClick(e) {
+    updateFilterOptions(filterKey, e.target.dataset.value)
     setPopupCollapsed(false)
   }
 

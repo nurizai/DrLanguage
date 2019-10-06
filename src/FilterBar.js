@@ -8,14 +8,20 @@ export default function FilterBar() {
   const [popupCollapsed, setPopupCollapsed] = useState(false)
   const [popupTags, setPopupTags] = useState([])
 
+  const [filter, setFilter] = useState({
+    language: 'all',
+    specialist: 'all',
+    location: 'all'
+  })
+
   // Close popup whenever user clicks somewhere in the app
   document.body.addEventListener('click', () => setPopupCollapsed(false));
 
   return (
     <FilterBarStyled>
-      <FilterAreaStyled onClick={() => openPopup('language')}><span>Filter nach</span>Sprache</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => openPopup('specialist')}><span>Filter nach</span>Spezialist</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => openPopup('location')}><span>Filter nach</span>Standort</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => openPopup('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => openPopup('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => openPopup('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
       {popupCollapsed && <Popup><Tag key='all' tags='Alle' /><Tag tags={popupTags} /></Popup>}
     </FilterBarStyled>
   )
@@ -87,7 +93,7 @@ const Popup = styled.div`
   padding: 10px;
   position: absolute;
   width: 100vw;
-  background-color: rgba(131,144,159,0.7);
+  background-color: #fffc;
   top: 48px;
   z-index: 1000;
   border-radius: 0 0 5px 5px;

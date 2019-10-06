@@ -25,7 +25,6 @@ export default function Cards({
       <>
         <address>{address}</address>
         <address>{location}</address>
-        {renderTags()}
       </>
     )
   }
@@ -39,6 +38,7 @@ export default function Cards({
       <CardStyled>
         <h2>{name}</h2>
         <div>{specialist}</div>
+        {renderTags()}
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>

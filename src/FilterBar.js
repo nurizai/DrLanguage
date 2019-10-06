@@ -8,23 +8,24 @@ export default function FilterBar() {
   const [popupCollapsed, setPopupCollapsed] = useState(false)
   const [popupTags, setPopupTags] = useState([])
 
-  const [filter, setFilter] = useState({
-    language: 'all',
-    specialist: 'all',
-    location: 'all'
-  })
-
-  // Close popup whenever user clicks somewhere in the app
-  document.body.addEventListener('click', () => setPopupCollapsed(false));
+  // Close popup whenever user clicks somewhere else in the app
+  document.body.addEventListener('click', (event) => {
+    event.target.dataset.filter === 'option' || setPopupCollapsed(false)
+  });
 
   return (
     <FilterBarStyled>
       <FilterAreaStyled onClick={() => openPopup('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
       <FilterAreaStyled onClick={() => openPopup('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
       <FilterAreaStyled onClick={() => openPopup('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
-      {popupCollapsed && <Popup><Tag key='all' tags='Alle' /><Tag tags={popupTags} /></Popup>}
+      {popupCollapsed && <Popup><Tag handleOnClick={() => handleOnClick()} key='all' tags='Alle' /><Tag handleOnClick={() => handleOnClick()} tags={popupTags} /></Popup>}
     </FilterBarStyled>
   )
+
+  function handleOnClick() {
+    console.log('yoyoyo')
+    setPopupCollapsed(false)
+  }
 
   function openPopup(filterType) {
 

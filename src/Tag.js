@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Tag({ tags }) {
+export default function Tag({ tags, handleOnClick }) {
   return (
-    tags === 'Alle' ? <TagStyled key={tags}>{tags}</TagStyled> : tags.map(tag => <TagStyled key={tag}>{tag}</TagStyled>)
+    tags === 'Alle' ? <TagStyled data-filter='option' onClick={handleOnClick} key={tags}>{tags}</TagStyled> : tags.map(tag => <TagStyled data-filter='option' onClick={handleOnClick} key={tag}>{tag}</TagStyled>)
   )
 }
 

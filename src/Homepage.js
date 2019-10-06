@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FilterBar from './FilterBar'
 import CardList from './CardList';
 import styled from 'styled-components'
 
 export default function Homepage() {
+  const [filter, setFilter] = useState({
+    language: 'all',
+    specialist: 'all',
+    location: 'all'
+  })
+
+  console.log(filter)
+
   return (
     <HomepageStyled>
       <FilterBar />

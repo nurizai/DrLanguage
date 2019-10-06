@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
     <FooterStyled>
-      <FooterFirstAreaStyled>Home</FooterFirstAreaStyled>
-      <FooterSecondAreaStyled>Bookmarked</FooterSecondAreaStyled>
-      <FooterThirdAreaStyled>Settings</FooterThirdAreaStyled>
+      <FooterFirstAreaStyled to='/'>Home</FooterFirstAreaStyled>
+      <FooterSecondAreaStyled to='/bookmarked'>Bookmarked</FooterSecondAreaStyled>
+      <FooterThirdAreaStyled to='settings'>Settings</FooterThirdAreaStyled>
     </FooterStyled>
   )
 }
@@ -17,30 +18,30 @@ const FooterStyled = styled.div`
   font-size: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr;
 `
-const FooterFirstAreaStyled = styled.div`
+const FooterFirstAreaStyled = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   color: white;
   background-color: #4882BB;
-  cursor: pointer;
+  text-decoration: none;
   `
-const FooterSecondAreaStyled = styled.div`
+const FooterSecondAreaStyled = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   color: white;
   background-color: #316EA9;
-  cursor: pointer;
+  text-decoration: none;
   `
-const FooterThirdAreaStyled = styled.div`
+const FooterThirdAreaStyled = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   color: white;
   background-color: #21598F;
-  cursor: pointer;
+  text-decoration: none;
   `

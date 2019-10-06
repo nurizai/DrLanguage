@@ -12,6 +12,7 @@ export default function Cards({
   specialized,
   address,
   tags,
+  standort,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -22,7 +23,8 @@ export default function Cards({
   function renderDetails() {
     return (
       <>
-        <div>{address}</div>
+        <address>{address}</address>
+        <address>{standort}</address>
         {renderTags()}
       </>
     )
@@ -35,9 +37,10 @@ export default function Cards({
         <img src={DrRanaAddress} alt="Address" />
       </CardImg>
       <CardStyled>
-        <h2 onClick={() => toggleCollapsed()}>{name}</h2>
+        <h2>{name}</h2>
         <div>{specialized}</div>
-        {collapsed || renderDetails()}
+        <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
+        {collapsed && renderDetails()}
       </CardStyled>
       <CardButton>
         <CardButtonLeftStyled href="mailto:nuri_nb@hotmail.de"><img src={email} alt="Email" /></CardButtonLeftStyled>
@@ -48,38 +51,40 @@ export default function Cards({
 
   function renderTags() {
     return (
-      <TagListStyled>
+      <div>
         {tags.map(tag => <Tag key={tag} text={tag} />)}
-      </TagListStyled>
+      </div>
     )
   }
 }
 
-const TagListStyled = styled.ul`
-  list-style-type: none;
-`
-
 const CardStyled = styled.div`
-  display: grid;
-  grid-template-rows: 0.5fr 0.5fr 0.5fr;
   background: white;
   padding: 10px;
 
   > h2 {
+      color: #222;
       display: inline;
       margin: 10px;
       font-family: Helvetica;
       font-size: 1rem;
-      font-weight: 525;
-      cursor: pointer;
+      font-weight: 500;
     }
 
-  > div {
-    margin: 0 0 0 10px;
+  > div, address {
+    margin: 10px;
     font-family: Helvetica;
-    font-size: 0.9rem;
+    font-size: 13px;
     color: #83909f;
     font-weight: 500;
+  }
+
+  > pre {
+    margin: 0 0 0 10px;
+    color: #4882bb;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
   }
 `
 const CardButton = styled.div`
@@ -113,6 +118,7 @@ const CardButtonRightStyled = styled.a`
 `
 
 const FullCardStyled = styled.section`
+  box-sizing: border-box;
   background-color: white;
   margin: 10px;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.8);

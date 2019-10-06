@@ -9,9 +9,10 @@ import Navigation from './Navigation'
 function App() {
   // eslint-disable-next-line
   const [cards, setCards] = useState(cardData)
+
   return (
     <AppStyled>
-      <Filter filtertags={getFilterTags()} specialized={getSpecializedTags()} address={getAddressTags()}></Filter>
+      <Filter filtertags={getFilterTags()} specialized={getSpecializedTags()} address={getLocationTags()}></Filter>
       <CardList/>
       <Navigation />
     </AppStyled>
@@ -35,7 +36,7 @@ function App() {
     return specialized
   }
 
-  function getAddressTags() {
+  function getLocationTags() {
     const address = Array.from(cards.reduce((pre, acc) => {
       pre.add(acc.address)
       return pre

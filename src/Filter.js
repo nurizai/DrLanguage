@@ -25,7 +25,7 @@ export default function Filter({ filtertags, specialized, address }) {
       <FilterButtonLanguage filtertags={filtertags} onClick={toggleFilter} ></FilterButtonLanguage>
       <FilterButtonSpecialized specialized={specialized} onClick={toggleFilter}></FilterButtonSpecialized>
       <FilterButtonAddress address={address} onClick={toggleFilter}></FilterButtonAddress>
-      {collapsed && <Popup >{filterData}</Popup>}
+      {collapsed && <Popup><Tag key='all' text='Alle' /> {filterData}</Popup>}
     </FilterStyled>
   )
 }

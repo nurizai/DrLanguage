@@ -2,26 +2,30 @@
   {
   "name": "Dr. Ahmed Kaiser",
   "specialized": "Kardiologie",
-  "address": "Wendemuthstraße 17, 22041 Hamburg",
+  "address": "Wendemuthstraße 17",
+  "standort": "22041 Hamburg",
   "tags": ["deutsch", "englisch", "dari"]
 },
 
 {
   "name": "Dr. Rana Khan",
   "specialized": "Zahnarzt",
-  "address": "Wendemuthstraße 24, 22041 Hamburg",
+  "address": "Wendemuthstraße 24",
+  "standort": "22041 Hamburg",
   "tags": ["deutsch", "englisch", "urdu"]
 },
 {
   "name": "Dr. Musab Al-Raman",
   "specialized": "Allgemeinarzt",
-  "address": "Wendemuthstraße 17, 22041 Hamburg",
+  "address": "Wendemuthstraße 17",
+  "standort": "22041 Hamburg",
   "tags": ["deutsch", "englisch", "arabisch"]
 },
 {
   "name": "Dr. Lanz Miller",
   "specialized": "Zahnarzt",
-  "address": "Wendemuthstraße 45, 22041 Hamburg",
+  "address": "Wendemuthstraße 45",
+  "standort": "22041 Hamburg",
   "tags": ["deutsch", "englisch", "französisch"]
 }
 ]

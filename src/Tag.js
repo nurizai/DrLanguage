@@ -11,10 +11,10 @@ const TagStyled = styled.li`
   display: inline-block;
   font-family: Helvetica;
   font-size: 0.6rem;
-  padding: 10px 10px;
-  background: #235789;
+  padding: 10px;
+  background: #316ea9;
   color: white;
   border-radius: 5px;
   text-transform: uppercase;
-  margin: 5px;
+  margin: 5px 5px 0 0;
 `

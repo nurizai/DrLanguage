@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <FooterStyled>
-      <FooterFirstAreaStyled to='/'>Home</FooterFirstAreaStyled>
-      <FooterSecondAreaStyled to='/bookmarked'>Bookmarked</FooterSecondAreaStyled>
-      <FooterThirdAreaStyled to='settings'>Settings</FooterThirdAreaStyled>
+      <FooterAreaStyled to='/'>Home</FooterAreaStyled>
+      <FooterAreaStyled to='/bookmarked'>Bookmarked</FooterAreaStyled>
+      <FooterAreaStyled to='settings'>Settings</FooterAreaStyled>
     </FooterStyled>
   )
 }
@@ -22,30 +22,24 @@ const FooterStyled = styled.div`
   font-size: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr;
 `
-const FooterFirstAreaStyled = styled(Link)`
+const FooterAreaStyled = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   color: white;
-  background-color: #4882BB;
   text-decoration: none;
-  `
-const FooterSecondAreaStyled = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  color: white;
-  background-color: #316EA9;
-  text-decoration: none;
-  `
-const FooterThirdAreaStyled = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  color: white;
-  background-color: #21598F;
-  text-decoration: none;
-  `
+  font-weight: bold;
+
+  :nth-child(1) {
+    background-color: #4882BB;
+  }
+
+  :nth-child(2) {
+    background-color: #316EA9;
+  }
+
+  :nth-child(3) {
+    background-color: #21598F;
+  }
+`

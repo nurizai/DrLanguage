@@ -1,11 +1,12 @@
 import React from 'react'
+import FilterBar from './FilterBar'
 import CardList from './CardList';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export default function Homepage() {
   return (
     <HomepageStyled>
+      <FilterBar />
       <CardList />
     </HomepageStyled>
   )

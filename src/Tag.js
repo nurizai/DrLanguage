@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Tag({ text }) {
+export default function Tag({ tags }) {
   return (
-    <TagStyled>{text}</TagStyled>
+    tags === 'Alle' ? <TagStyled key={tags}>{tags}</TagStyled> : tags.map(tag => <TagStyled key={tag}>{tag}</TagStyled>)
   )
 }
 

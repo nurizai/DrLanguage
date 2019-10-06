@@ -9,10 +9,10 @@ import DrRanaAddress from './images/DrRanaAddress.svg'
 
 export default function Cards({
   name,
-  specialized,
+  specialist,
   address,
   tags,
-  standort,
+  location,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -24,7 +24,7 @@ export default function Cards({
     return (
       <>
         <address>{address}</address>
-        <address>{standort}</address>
+        <address>{location}</address>
         {renderTags()}
       </>
     )
@@ -38,7 +38,7 @@ export default function Cards({
       </CardImg>
       <CardStyled>
         <h2>{name}</h2>
-        <div>{specialized}</div>
+        <div>{specialist}</div>
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>
@@ -52,7 +52,7 @@ export default function Cards({
   function renderTags() {
     return (
       <div>
-        {tags.map(tag => <Tag key={tag} text={tag} />)}
+        {<Tag tags={tags} />}
       </div>
     )
   }

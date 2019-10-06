@@ -20,5 +20,5 @@ export default function CardList() {
 }
 
 const CardListStyled = styled.section`
-  padding-bottom: 48px;
+  padding: 48px 0;
 `

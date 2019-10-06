@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
 import Homepage from './Homepage'
-import Filter from './Filter'
-import cardData from './cards.json'
 import Navigation from './Navigation'
+import GlobalStyles from './GlobalStyles';
 
 
 function App() {
-  // eslint-disable-next-line
-  const [cards, setCards] = useState(cardData)
-
   return (
     <Router>
       <AppStyled>
+        <GlobalStyles />
         <Switch>
           <Route exact path="/" render={() => <Homepage />} />
           <Route path="/bookmarked" render={() => <h1>Bookmarked</h1>} />
@@ -22,34 +19,7 @@ function App() {
         <Navigation />
       </AppStyled>
     </Router>
-  );
-
-
-  function getFilterTags() {
-    const filtertags = Array.from(cards.reduce((pre, acc) => {
-      acc.tags.forEach(tag => pre.add(tag))
-      return pre
-    }, new Set()))
-    return filtertags
-  }
-
-
-  function getSpecializedTags() {
-    const specialized = Array.from(cards.reduce((pre, acc) => {
-      pre.add(acc.specialized)
-      return pre
-    }, new Set()))
-    return specialized
-  }
-
-  function getLocationTags() {
-    const address = Array.from(cards.reduce((pre, acc) => {
-      pre.add(acc.address)
-      return pre
-    }, new Set()))
-    return address
-  }
-
+  )
 }
 
 

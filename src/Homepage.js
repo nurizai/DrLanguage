@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 export default function Homepage() {
 
+  // TODO: Pass filter to CardList where it is used to set filters
   // TODO: Set to array later in order to filter with multiple choices
   const [filter, setFilter] = useState({
     language: '',

@@ -8,6 +8,7 @@ import DrRanaAddress from './images/DrRanaAddress.svg'
 
 
 export default function Cards({
+  id,
   name,
   specialist,
   address,
@@ -97,6 +98,7 @@ const CardStyled = styled.div`
 
   > pre {
     margin: 0 0 0 10px;
+    width: 15px;
     color: #4882bb;
     font-size: 15px;
     font-weight: 700;

@@ -1,5 +1,7 @@
 [
   {
+  "avatar": "DrRana",
+  "map": "DrRanaAddress",
   "name": "Dr. Ahmed Kaiser",
   "specialist": "Kardiologie",
   "address": "Wendemuthstraße 17",
@@ -20,6 +22,13 @@
   "address": "Wendemuthstraße 17",
   "location": "22041 Hamburg",
   "tags": ["deutsch", "englisch", "arabisch"]
+},
+{
+  "name": "Dr. Lanz Miller",
+  "specialist": "Zahnarzt",
+  "address": "Kurfürstendamm 23",
+  "location": "10719 Berlin",
+  "tags": ["deutsch", "englisch", "französisch"]
 },
 {
   "name": "Dr. Lanz Miller",

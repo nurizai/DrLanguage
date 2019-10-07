@@ -59,13 +59,14 @@ export default function FilterBar({ updateFilterOptions }) {
 
 }
 
-const FilterBarStyled = styled.main`
+const FilterBarStyled = styled.header`
   position: fixed;
   top: 0;
   width: 100vw;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  z-index: 500;
 `
 
 const FilterAreaStyled = styled.button`

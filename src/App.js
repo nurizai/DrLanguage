@@ -5,7 +5,6 @@ import Homepage from './Homepage'
 import Navigation from './Navigation'
 import GlobalStyles from './GlobalStyles';
 
-
 function App() {
   return (
     <Router>

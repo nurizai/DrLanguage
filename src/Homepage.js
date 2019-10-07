@@ -3,6 +3,7 @@ import FilterBar from './FilterBar'
 import CardList from './CardList';
 import styled from 'styled-components'
 
+
 export default function Homepage() {
 
   // TODO: Pass filter to CardList where it is used to set filters

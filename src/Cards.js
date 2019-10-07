@@ -13,6 +13,8 @@ export default function Cards({
   address,
   tags,
   location,
+  onBookmarkClick,
+  isBookmarked,
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -29,8 +31,14 @@ export default function Cards({
     )
   }
 
+  function handleBookmarkClick(event) {
+    event.stopPropagation()
+    onBookmarkClick()
+  }
+
   return (
     <FullCardStyled>
+      <BookmarkStyled onClick={handleBookmarkClick} active={isBookmarked}/>
       <CardImg>
         <img src={DrRana} alt="Doctor" />
         <img src={DrRanaAddress} alt="Address" />
@@ -58,6 +66,14 @@ export default function Cards({
   }
 }
 
+const BookmarkStyled = styled.div`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: -5px;
+  background: ${props => (props.active ? 'hotpink' : 'lightgray')};
+`
 const CardStyled = styled.div`
   background: white;
   padding: 10px;
@@ -118,6 +134,7 @@ const CardButtonRightStyled = styled.a`
 `
 
 const FullCardStyled = styled.section`
+  position: relative;
   box-sizing: border-box;
   background-color: white;
   margin: 10px;

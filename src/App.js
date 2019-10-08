@@ -7,6 +7,7 @@ import { getCards, patchCard, postCard } from './services'
 import GlobalStyles from './GlobalStyles';
 import CardList from './CardList';
 import SettingsPage from './SettingsPage'
+import BookmarksPage from './BookmarksPage';
 
 function App() {
   const [cards, setCards] = useState([])
@@ -15,15 +16,13 @@ function App() {
     getCards().then(setCards)
   }, [])
 
-  const BookmarksPage = withCardPage('Bookmarks', 'isBookmarked')
-
   return (
     <Router>
       <AppStyled>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" render={() => <Homepage cards={cards} />} />
-          <Route path="/bookmarked" render={BookmarksPage} />
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={(card) => handleBookmarkClick(card)} />} />
+          <Route path="/bookmarked" render={() => <BookmarksPage title="Bookmarks" />} />
           <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
         <Navigation />

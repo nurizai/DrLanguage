@@ -15,7 +15,7 @@ export default function SettingsPage({ onSubmit, title}) {
     form.name.focus()
   }
 
-  const Answer = () => (
+  const Address = () => (
     <section css="color: #333">
       <small>
         <em>Preview:</em>
@@ -42,7 +42,7 @@ export default function SettingsPage({ onSubmit, title}) {
         </div>
         <textarea name="address" onChange={event => setAddress(event.target.value)} />
         </LabelStyled>
-        {address && <Answer />}
+        {address && <Address />}
         <ButtonStyled>
           Create card
         </ButtonStyled>

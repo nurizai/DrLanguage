@@ -17,7 +17,9 @@ const PageStyled = styled.main`
   overflow: auto;
 `
 const Header = styled.header`
+  font-weight: bold;
   display: flex;
+  font-size: 0.8rem;
   justify-content: center;
   align-items: center;
   background: #4882BB;

@@ -15,7 +15,7 @@ export default function Cards({
   tags,
   location,
   onBookmarkClick,
-  isBookmarked,
+  isBookmarked
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -39,7 +39,7 @@ export default function Cards({
 
   return (
     <FullCardStyled>
-      <BookmarkStyled onClick={handleBookmarkClick} active={isBookmarked}/>
+      <BookmarkStyled onClick={(event) => handleBookmarkClick(event)} active={isBookmarked}/>
       <CardImg>
         <img src={DrRana} alt="Doctor" />
         <img src={DrRanaAddress} alt="Address" />
@@ -73,7 +73,7 @@ const BookmarkStyled = styled.div`
   position: absolute;
   right: 20px;
   top: -5px;
-  background: ${props => (props.active ? 'hotpink' : 'lightgray')};
+  background: ${props => (props.active ? '#90ccc2' : '#83909f')};
 `
 const CardStyled = styled.div`
   background: white;
@@ -142,6 +142,7 @@ const FullCardStyled = styled.section`
   margin: 10px;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.8);
   border-radius: 8px;
+  overflow-y: scroll;
 `
 
 const CardImg = styled.div`

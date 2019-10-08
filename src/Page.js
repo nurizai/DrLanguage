@@ -20,6 +20,6 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #444;
+  background: #4882BB;
   color: white;
 `

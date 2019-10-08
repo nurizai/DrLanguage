@@ -66,6 +66,6 @@ const ButtonStyled = styled.button`
   border: none;
   border-radius: 3px;
   padding: 10px;
-  background: hotpink;
+  background: #4882BB;
   color: white;
 `

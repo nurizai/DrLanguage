@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Cards from './Cards'
-import cardData from './cards.json'
 import styled from 'styled-components/'
 
 export default function CardList({cards}) {

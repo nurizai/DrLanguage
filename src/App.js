@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
 import Homepage from './Homepage'
 import Navigation from './Navigation'
-import { getCards } from './services'
+import { getCards, patchCard, postCard } from './services'
 import GlobalStyles from './GlobalStyles';
+import CardList from './CardList';
+import SettingsPage from './SettingsPage'
 
 function App() {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
     getCards().then(setCards)
-
   }, [])
+
+  const BookmarksPage = withCardPage('Bookmarks', 'isBookmarked')
 
   return (
     <Router>
@@ -20,13 +23,37 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route exact path="/" render={() => <Homepage cards={cards} />} />
-          <Route path="/bookmarked" render={() => <h1>Bookmarked</h1>} />
-          <Route path="/settings" render={() => <h1>Settings</h1>} />
+          <Route path="/bookmarked" render={BookmarksPage} />
+          <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
         <Navigation />
       </AppStyled>
     </Router>
   )
+
+  function withCardPage(name, filterProp) {
+    return () => {
+      const filteredCards = filterProp ? cards.filter(card => card[filterProp]) : cards
+      return <CardList name={name} cards={filteredCards} onBookmarkClick={handleBookmarkClick} />
+    }
+  }
+
+  function createCard(cardData) {
+    postCard(cardData).then(card => {
+      setCards([...cards, card])
+    })
+  }
+
+  function handleBookmarkClick(card) {
+    patchCard(card._id, { isBookmarked: !card.isBookmarked }).then(updateCard => {
+      const index = cards.findIndex(card => card._id === updateCard._id)
+      setCards([
+        ...cards.slice(0, index),
+        {...card, isBookmarked: updateCard.isBookmarked },
+        ...cards.slice(index + 1),
+      ])
+    })
+  }
 }
 
 

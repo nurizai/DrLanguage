@@ -2,10 +2,12 @@ import React from 'react'
 import CardList from './CardList'
 import Page from './Page'
 
-export default function BookmarksPage({cards, title}) {
+export default function BookmarksPage({ title, filteredCards, handleBookmarkClick }) {
   return (
     <Page title={title}>
-      <h1>Bookmarks Yo!</h1>
+      <h1>Test</h1>
     </Page>
   )
 }
+
+// <CardList cards={filteredCards} onBookmarkClick={handleBookmarkClick}/>

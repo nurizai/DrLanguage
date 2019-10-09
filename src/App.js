@@ -21,7 +21,7 @@ function App() {
       <AppStyled>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={(card) => handleBookmarkClick(card)} />} />
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} />} />
           <Route path="/bookmarked" render={() => <BookmarksPage title="Bookmarks" />} />
           <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
@@ -30,10 +30,10 @@ function App() {
     </Router>
   )
 
-  function withCardPage(name, filterProp) {
+  function withCardPage(title, filterProp) {
     return () => {
       const filteredCards = filterProp ? cards.filter(card => card[filterProp]) : cards
-      return <CardList name={name} cards={filteredCards} onBookmarkClick={handleBookmarkClick} />
+      return <CardList title={title} cards={filteredCards} onBookmarkClick={handleBookmarkClick} />
     }
   }
 

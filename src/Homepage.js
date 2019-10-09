@@ -28,7 +28,7 @@ export default function Homepage({cards, onBookmarkClick}) {
   return (
     <HomepageStyled>
       <FilterBar updateFilterOptions={(key, value) => updateFilterOptions(key, value)} />
-      <CardList cards={cards} onBookmarkClick={(card) => onBookmarkClick(card)} />
+      <CardList cards={cards} onBookmarkClick={onBookmarkClick} />
     </HomepageStyled>
   )
 
@@ -37,5 +37,6 @@ export default function Homepage({cards, onBookmarkClick}) {
 const HomepageStyled = styled.main`
   height: 100vh;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   scrollbar-width: none;
 `

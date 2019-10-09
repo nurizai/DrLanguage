@@ -34,12 +34,14 @@ export default function SettingsPage({ onSubmit, title}) {
         </LabelStyled>
         <LabelStyled>
           Fachbereich
-          <textarea name="fachbereich"/>
+          <textarea name="specialist"/>
         </LabelStyled>
         <LabelStyled>
-        <div>
+          Sprache(n)
+          <textarea name="tags"/>
+        </LabelStyled>
+        <LabelStyled>
           Address
-        </div>
         <textarea name="address" onChange={event => setAddress(event.target.value)} />
         </LabelStyled>
         {address && <Address />}
@@ -53,13 +55,34 @@ export default function SettingsPage({ onSubmit, title}) {
 
 const FormStyled = styled.form`
   display: grid;
-  gap: 20px;
+  gap: 10px;
   padding: 20px;
 `
 
 const LabelStyled = styled.label`
   display: grid;
   gap: 10px;
+  border-bottom: 1px solid black;
+
+  > textarea {
+    padding-top: 20px;
+    cursor: pointer;
+    border: none;
+    color: #1c1e21;
+    direction: ltr;
+    line-height: 1.34;
+    font-size: 12px;
+  }
+
+  > input {
+    padding-top: 20px;
+    cursor: pointer;
+    border: none;
+    color: #1c1e21;
+    direction: ltr;
+    line-height: 1.34;
+    font-size: 12px;
+  }
 `
 
 const ButtonStyled = styled.button`
@@ -68,4 +91,5 @@ const ButtonStyled = styled.button`
   padding: 10px;
   background: #4882BB;
   color: white;
+  cursor: pointer;
 `

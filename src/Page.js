@@ -24,4 +24,5 @@ const Header = styled.header`
   align-items: center;
   background: #4882BB;
   color: white;
+  text-transform: uppercase;
 `

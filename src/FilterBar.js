@@ -24,7 +24,10 @@ export default function FilterBar({ updateFilterOptions }) {
       <FilterAreaStyled onClick={() => handleFilterAreaClick('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
       <FilterAreaStyled onClick={() => handleFilterAreaClick('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
       <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
-      {popupCollapsed && <Popup><Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' /><Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} /></Popup>}
+      {popupCollapsed &&
+      <Popup>
+        <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' /><Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
+      </Popup>}
     </FilterBarStyled>
   )
 

@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import Tag from './Tag'
 import email from './icons/email.svg'
 import phone from './icons/phone.svg'
-import DrRana from './images/DrRana.svg'
 import DrRanaAddress from './images/DrRanaAddress.svg'
-
 
 export default function Cards({
   id,
@@ -13,6 +11,7 @@ export default function Cards({
   specialist,
   address,
   tags,
+  photo,
   location,
   onBookmarkClick,
   isBookmarked,
@@ -43,7 +42,7 @@ export default function Cards({
     <FullCardStyled>
       <BookmarkStyled onClick={(event) => handleBookmarkClick(event)} active={isBookmarked}/>
       <CardImg>
-        <img src={DrRana} alt="Doctor" />
+        <img src={photo} alt="Doctor" />
         <img src={DrRanaAddress} alt="Address" />
       </CardImg>
       <CardStyled>
@@ -151,6 +150,7 @@ display: grid;
 grid-template-columns: 109px 244px;
 
   & img:nth-of-type(1) {
+    height: 109px;
     border-top-left-radius: 8px;
   }
 

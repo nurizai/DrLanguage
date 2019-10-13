@@ -15,7 +15,9 @@ export default function Cards({
   tags,
   location,
   onBookmarkClick,
-  isBookmarked
+  isBookmarked,
+  emailAddress,
+  phoneNumber
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -52,8 +54,8 @@ export default function Cards({
         {collapsed && renderDetails()}
       </CardStyled>
       <CardButton>
-        <CardButtonLeftStyled href="mailto:nuri_nb@hotmail.de"><img src={email} alt="Email" /></CardButtonLeftStyled>
-        <CardButtonRightStyled href="tel:+4917 6129120"><img src={phone} alt="Phone" /></CardButtonRightStyled>
+        <CardButtonLeftStyled href={"mailto:" + emailAddress}><img src={email} alt="Email" /></CardButtonLeftStyled>
+        <CardButtonRightStyled href={"tel:" + phoneNumber}><img src={phone} alt="Phone" /></CardButtonRightStyled>
       </CardButton>
     </FullCardStyled>
   )
@@ -67,7 +69,7 @@ export default function Cards({
   }
 }
 
-const BookmarkStyled = styled.div`
+const BookmarkStyled = styled.img`
   width: 40px;
   height: 40px;
   position: absolute;

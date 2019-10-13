@@ -5,7 +5,6 @@ import Homepage from './Homepage'
 import Navigation from './Navigation'
 import { getCards, patchCard, postCard } from './services'
 import GlobalStyles from './GlobalStyles';
-import CardList from './CardList';
 import SettingsPage from './SettingsPage'
 import BookmarksPage from './BookmarksPage';
 
@@ -22,20 +21,13 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} />} />
-          <Route path="/bookmarked" render={() => <BookmarksPage title="Bookmarks" />} />
+          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Bookmarks" filteredCards={cards.filter(card => card.isBookmarked === true)}  />} />
           <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
         <Navigation />
       </AppStyled>
     </Router>
   )
-
-  function withCardPage(title, filterProp) {
-    return () => {
-      const filteredCards = filterProp ? cards.filter(card => card[filterProp]) : cards
-      return <CardList title={title} cards={filteredCards} onBookmarkClick={handleBookmarkClick} />
-    }
-  }
 
   function createCard(cardData) {
     postCard(cardData).then(card => {

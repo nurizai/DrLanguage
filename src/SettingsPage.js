@@ -1,91 +1,99 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import Page from './Page'
 
 export default function SettingsPage({ onSubmit, title}) {
-  const [address, setAddress] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    onSubmit(data)
+    const tags = data.tags.split(" ")
+    const dataWithTagsArray = {
+      ...data,
+      tags: tags
+    }
+
+    onSubmit(dataWithTagsArray)
     form.reset()
     form.name.focus()
   }
 
-  const Address = () => (
-    <section css="color: #333">
-      <small>
-        <em>Preview:</em>
-      </small>
-      <br/>
-
-    </section>
-  )
-
   return (
     <Page title={title}>
       <FormStyled onSubmit={handleSubmit}>
+
         <LabelStyled>
           Name
-          <input name="name"/>
         </LabelStyled>
+        <input name="name" type="text"/>
+
         <LabelStyled>
           Fachbereich
-          <textarea name="specialist"/>
         </LabelStyled>
+        <input name="specialist" type="text"/>
+
         <LabelStyled>
           Sprache(n)
-          <textarea name="tags"/>
         </LabelStyled>
+        <input name="tags" type="text"/>
+
         <LabelStyled>
-          Address
-        <textarea name="address" onChange={event => setAddress(event.target.value)} />
+          Straße/Nr.
         </LabelStyled>
-        {address && <Address />}
+        <input name="address" type="text"/>
+
+        <LabelStyled>
+          PLZ/Ort
+        </LabelStyled>
+        <input name="location" type="text"/>
+
+        <LabelStyled>
+          Telefon
+        </LabelStyled>
+        <input name="phoneNumber" type="text"/>
+
+        <LabelStyled>
+          E-Mail
+        </LabelStyled>
+        <input name="emailaddress" type="text"/>
+
         <ButtonStyled>
           Create card
         </ButtonStyled>
+
       </FormStyled>
     </Page>
   )
 }
 
 const FormStyled = styled.form`
+
   display: grid;
-  gap: 10px;
+  grid-auto-rows: repeat(8, 1fr);
   padding: 20px;
+  margin-top: 48px;
+
+> input {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  cursor: pointer;
+
+    &:hover {
+      border: 1px solid #4882BB;
+    }
+  }
 `
 
 const LabelStyled = styled.label`
-  display: grid;
-  gap: 10px;
-  border-bottom: 1px solid black;
-
-  > textarea {
-    padding-top: 20px;
-    cursor: pointer;
-    border: none;
-    color: #1c1e21;
-    direction: ltr;
-    line-height: 1.34;
-    font-size: 12px;
-  }
-
-  > input {
-    padding-top: 20px;
-    cursor: pointer;
-    border: none;
-    color: #1c1e21;
-    direction: ltr;
-    line-height: 1.34;
-    font-size: 12px;
-  }
+margin-top: 10px;
 `
 
 const ButtonStyled = styled.button`
+  margin-top: 20px;
   border: none;
   border-radius: 3px;
   padding: 10px;

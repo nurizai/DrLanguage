@@ -9,7 +9,7 @@ export default function SettingsPage({ onSubmit, title}) {
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const tags = data.tags.split(" ")
+    const tags = data.tags.split(" ").map(tag => tag.toLowerCase())
     const dataWithTagsArray = {
       ...data,
       tags: tags

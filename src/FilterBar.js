@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag'
+import { getCards } from './services'
 
 export default function FilterBar({ updateFilterOptions }) {
-  const cards = require('./cards.json')
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCards().then(setCards)
+  }, [])
 
   const [popupCollapsed, setPopupCollapsed] = useState(false)
   const [popupTags, setPopupTags] = useState([])

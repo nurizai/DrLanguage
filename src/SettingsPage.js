@@ -105,7 +105,7 @@ const FormStyled = styled.form`
   padding: 20px;
   margin-top: 48px;
 
-  input {
+  > input {
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid lightgrey;

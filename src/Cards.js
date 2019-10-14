@@ -6,7 +6,6 @@ import phone from './icons/phone.svg'
 import DrRanaAddress from './images/DrRanaAddress.svg'
 
 export default function Cards({
-  id,
   name,
   specialist,
   address,
@@ -151,6 +150,8 @@ grid-template-columns: 109px 244px;
 
   & img:nth-of-type(1) {
     height: 109px;
+    width: 109px;
+    object-fit: cover;
     border-top-left-radius: 8px;
   }
 

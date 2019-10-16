@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import Bookmark from './icons/bookmark.svg'
+import BookmarkStar from './icons/star.svg'
 import Settings from './icons/settings.svg'
 import Home from './icons/home.svg'
 
@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <FooterStyled>
       <FooterAreaStyled exact to='/'><img src={Home} alt="home"/></FooterAreaStyled>
-      <FooterAreaStyled to='/bookmarked'><img src={Bookmark} alt="bookmark"/></FooterAreaStyled>
+      <FooterAreaStyled to='/bookmarked'><img src={BookmarkStar} alt="bookmark"/></FooterAreaStyled>
       <FooterAreaStyled to='settings'><img src={Settings} alt="settings"/></FooterAreaStyled>
     </FooterStyled>
   )

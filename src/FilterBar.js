@@ -26,7 +26,8 @@ export default function FilterBar({ updateFilterOptions }) {
       <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
       {popupCollapsed &&
       <Popup>
-        <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' /><Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
+        <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
+        <Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
       </Popup>}
     </FilterBarStyled>
   )
@@ -69,7 +70,6 @@ export default function FilterBar({ updateFilterOptions }) {
 
 const FilterBarStyled = styled.header`
   position: fixed;
-  top: 0;
   width: 100vw;
   text-align: center;
   display: grid;

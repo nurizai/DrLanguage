@@ -14,6 +14,12 @@ export default function Homepage({cards, onBookmarkClick}) {
     location: ''
   })
 
+  function getSortedCards() {
+    const sortedCards = cards.slice()
+    sortedCards.sort((a, b) => a.specialist - b.specialist)
+    return sortedCards
+  }
+
   function updateFilterOptions(key, value) {
     setFilter({
       ...filter,
@@ -24,7 +30,7 @@ export default function Homepage({cards, onBookmarkClick}) {
   return (
     <HomepageStyled>
       <FilterBar updateFilterOptions={(key, value) => updateFilterOptions(key, value)} />
-      <CardList cards={cards} onBookmarkClick={onBookmarkClick} filter={filter} />
+      <CardList cards={getSortedCards()} onBookmarkClick={onBookmarkClick} filter={filter} />
     </HomepageStyled>
   )
 

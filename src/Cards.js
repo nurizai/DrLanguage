@@ -4,6 +4,7 @@ import Tag from './Tag'
 import email from './icons/email.svg'
 import phone from './icons/phone.svg'
 import DrRanaAddress from './images/DrRanaAddress.svg'
+import {Star} from 'styled-icons/boxicons-solid/Star'
 
 export default function Cards({
   name,
@@ -67,13 +68,13 @@ export default function Cards({
   }
 }
 
-const BookmarkStyled = styled.img`
-  width: 40px;
-  height: 40px;
+const BookmarkStyled = styled(Star)`
+  width: 27px;
+  height: 27px;
   position: absolute;
-  right: 20px;
-  top: -5px;
-  background: ${props => (props.active ? '#90ccc2' : '#83909f')};
+  right: 2px;
+  top: 2px;
+  color: ${props => (props.active ? '#f7a80b': '#83909f')};
 `
 const CardStyled = styled.div`
   background: white;
@@ -82,14 +83,14 @@ const CardStyled = styled.div`
   > h2 {
       color: #222;
       display: inline;
-      margin: 10px;
+      margin: 5px 0;
       font-family: Helvetica;
       font-size: 1rem;
       font-weight: 500;
     }
 
   > div, address {
-    margin: 10px;
+    margin: 5px 0;
     font-family: Helvetica;
     font-size: 13px;
     color: #83909f;
@@ -97,7 +98,7 @@ const CardStyled = styled.div`
   }
 
   > pre {
-    margin: 0 0 0 10px;
+    margin: 0;
     width: 15px;
     color: #4882bb;
     font-size: 15px;
@@ -136,11 +137,13 @@ const CardButtonRightStyled = styled.a`
 `
 
 const FullCardStyled = styled.section`
+  height: auto;
+  width: auto;
   position: relative;
   box-sizing: border-box;
   background-color: white;
-  margin: 10px;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.8);
+  margin: 15px;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.9);
   border-radius: 8px;
 `
 
@@ -157,5 +160,8 @@ grid-template-columns: 109px 244px;
 
   & img:nth-of-type(2) {
     border-top-right-radius: 8px;
+    width: 236px;
+    height: 109px;
+    object-fit: cover;
   }
 `

@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 export default function Tag({ tags, handleOnClick }) {
   return (
-    tags === 'alle' ? <TagStyled data-filter='option' data-value='' onClick={handleOnClick} key={tags}>{tags}</TagStyled> : tags.map(tag => <TagStyled data-filter='option' data-value={tag} onClick={handleOnClick} key={tag}>{tag}</TagStyled>)
+    tags === 'alle' ? <TagStyled data-filter='option' data-value='' onClick={handleOnClick} key={tags}>{tags}</TagStyled>
+    : tags.map(tag => <TagStyled data-filter='option' data-value={tag} onClick={handleOnClick} key={tag}>{tag}</TagStyled>)
   )
 }
 
@@ -11,7 +12,7 @@ const TagStyled = styled.div`
   display: inline-block;
   font-family: Helvetica;
   font-size: 0.6rem;
-  padding: 10px;
+  padding: 8px;
   background: #316ea9;
   color: white;
   border-radius: 5px;

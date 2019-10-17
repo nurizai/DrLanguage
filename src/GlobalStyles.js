@@ -8,6 +8,6 @@ export default createGlobalStyle`
   body {
     margin: 0;
     background: #eee;
-    font-family: helvetica;
+    font-family: 'Helvetica', sans-serif;
   }
 `

@@ -47,7 +47,7 @@ export default function Cards({
       </CardImg>
       <CardStyled>
         <h2>{name}</h2>
-        <div>{specialist}</div>
+        <h4>{specialist}</h4>
         {renderTags()}
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
@@ -82,18 +82,28 @@ const CardStyled = styled.div`
   text-align: center;
 
   > h2 {
+      font-family: 'Fira Sans';
       color: #83909f;
       display: inline;
       margin: 5px 0;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 17px;
+      font-weight: normal;
     }
 
-  > div, address {
-    margin: 5px 0;
+    > h4 {
+      font-family: 'Fira Sans';
+      color: #83909f;
+      line-height: 1.1;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 7px 0;
+    }
+
+  > address {
+    margin: 7px 0;
     font-size: 13px;
     color: #83909f;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   > pre {

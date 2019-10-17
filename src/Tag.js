@@ -10,9 +10,8 @@ export default function Tag({ tags, handleOnClick }) {
 
 const TagStyled = styled.div`
   display: inline-block;
-  font-family: Helvetica;
   font-size: 0.6rem;
-  padding: 8px;
+  padding: 9px;
   background: #316ea9;
   color: white;
   border-radius: 5px;

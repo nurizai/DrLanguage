@@ -69,8 +69,8 @@ export default function Cards({
 }
 
 const BookmarkStyled = styled(Star)`
-  width: 27px;
-  height: 27px;
+  width: 24px;
+  height: 24px;
   position: absolute;
   right: 2px;
   top: 2px;
@@ -79,25 +79,25 @@ const BookmarkStyled = styled(Star)`
 const CardStyled = styled.div`
   background: white;
   padding: 10px;
+  text-align: center;
 
   > h2 {
-      color: #222;
+      color: #83909f;
       display: inline;
       margin: 5px 0;
-      font-family: Helvetica;
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
   > div, address {
     margin: 5px 0;
-    font-family: Helvetica;
     font-size: 13px;
     color: #83909f;
     font-weight: 500;
   }
 
   > pre {
+    display: block;
     margin: 0;
     width: 15px;
     color: #4882bb;
@@ -143,7 +143,7 @@ const FullCardStyled = styled.section`
   box-sizing: border-box;
   background-color: white;
   margin: 15px;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.9);
   border-radius: 8px;
 `
 
@@ -153,7 +153,7 @@ grid-template-columns: 109px 244px;
 
   & img:nth-of-type(1) {
     height: 109px;
-    width: 109px;
+    width: 100%;
     object-fit: cover;
     border-top-left-radius: 8px;
   }

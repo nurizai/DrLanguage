@@ -52,62 +52,57 @@ export default function SettingsPage({ onSubmit, title}) {
         <LabelStyled>
           Name
         </LabelStyled>
-        <input name="name" type="text"/>
-
+        <input name="name" type="text" placeholder="Herr Dr. Max Mustermann"/>
         <LabelStyled>
           Foto
         </LabelStyled>
         <input name="photo" type="file"/>
-
         <LabelStyled>
           Fachbereich
         </LabelStyled>
-        <input name="specialist" type="text"/>
-
+        <input name="specialist" type="text" placeholder="Allgemeinarzt"/>
         <LabelStyled>
           Sprache(n)
         </LabelStyled>
-        <input name="tags" type="text"/>
-
+        <input name="tags" type="text" placeholder="Deutsch Englisch Farsi"/>
         <LabelStyled>
           Straße/Nr.
         </LabelStyled>
-        <input name="address" type="text"/>
-
+        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12"/>
         <LabelStyled>
           PLZ/Ort
         </LabelStyled>
-        <input name="location" type="text"/>
-
+        <input name="location" type="text" placeholder="12248 Hamburg"/>
         <LabelStyled>
           Telefon
         </LabelStyled>
-        <input name="phoneNumber" type="text"/>
-
+        <input name="phoneNumber" type="text" placeholder="040 76 37 474"/>
         <LabelStyled>
           E-Mail
         </LabelStyled>
-        <input name="emailaddress" type="text"/>
+        <input name="emailaddress" type="text" placeholder="maxmustermann@gmail.de"/>
 
-        <ButtonStyled>
-          Create card
-        </ButtonStyled>
+      <ButtonStyled>
+        Create card
+      </ButtonStyled>
 
       </FormStyled>
+
+
+
     </Page>
   )
 }
 
 const FormStyled = styled.form`
-
   display: grid;
   grid-auto-rows: repeat(8, 1fr);
   padding: 20px;
-  margin-top: 48px;
+  margin-top: 36px;
 
   > input {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid lightgrey;
     border-radius: 5px;
     cursor: pointer;
@@ -119,15 +114,18 @@ const FormStyled = styled.form`
 `
 
 const LabelStyled = styled.label`
-margin-top: 10px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #3b3b3b;
 `
 
 const ButtonStyled = styled.button`
-  margin-top: 20px;
+  margin-top: 15px;
   border: none;
   border-radius: 3px;
   padding: 10px;
-  background: #4882BB;
+  background: #316ea9;
   color: white;
+  font-size: 0.8rem;
   cursor: pointer;
 `

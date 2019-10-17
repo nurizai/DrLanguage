@@ -16,7 +16,7 @@ export default function CardList({ cards, onBookmarkClick, filter }) {
 
     // Nothing is set
     if (!language && !specialist && !location) {
-      result = card
+      result = card 
     }
 
     // only LANGUAGE tag is set

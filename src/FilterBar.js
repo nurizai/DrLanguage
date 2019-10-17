@@ -13,6 +13,11 @@ export default function FilterBar({ updateFilterOptions }) {
   const [popupCollapsed, setPopupCollapsed] = useState(false)
   const [popupTags, setPopupTags] = useState([])
   const [filterKey, setFilterKey] = useState('')
+  const [currentFilter, setCurrentFilter] = useState({
+    language: '',
+    specialist: '',
+    location: ''
+  })
 
   // Close popup whenever user clicks somewhere else in the app
   document.body.addEventListener('click', (e) => {
@@ -26,8 +31,8 @@ export default function FilterBar({ updateFilterOptions }) {
       <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
       {popupCollapsed &&
       <Popup>
-        <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
-        <Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
+        <Tag active={false} handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
+        <Tag active={false} handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
       </Popup>}
     </FilterBarStyled>
   )

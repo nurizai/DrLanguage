@@ -5,6 +5,7 @@ import email from './icons/email.svg'
 import phone from './icons/phone.svg'
 import DrRanaAddress from './images/DrRanaAddress.svg'
 import {Star} from 'styled-icons/boxicons-solid/Star'
+import ReactMapGl from 'react-map-gl'
 
 export default function Cards({
   name,

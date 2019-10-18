@@ -19,23 +19,37 @@ export default function FilterBar({ updateFilterOptions }) {
     location: ''
   })
 
-  // Close popup whenever user clicks somewhere else in the app
-  document.body.addEventListener('click', (e) => {
-    e.target.dataset.filter === 'option' || setPopupCollapsed(false)
-  })
+  const currentLanguage = currentFilter.language
+  const currentSpecialist = currentFilter.specialist
+  const currentLocation = currentFilter.location
 
   return (
     <FilterBarStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('language')}><span>Filtern nach</span>Sprache</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('specialist')}><span>Filtern nach</span>Spezialist</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}><span>Filtern nach</span>Standort</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('language')}>{renderFilterArea('language', currentLanguage)}</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('specialist')}>{renderFilterArea('specialist', currentSpecialist)}</FilterAreaStyled>
+      <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}>{renderFilterArea('location', currentLocation)}</FilterAreaStyled>
       {popupCollapsed &&
       <Popup>
-        <Tag active={false} handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
-        <Tag active={false} handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
+        <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
+        <Tag handleOnClick={(e) => handleTagClick(e)} tags={popupTags} />
       </Popup>}
     </FilterBarStyled>
   )
+
+  function renderFilterArea(type, value) {
+    const currentType = () => {
+      if (type === 'language') { return 'Sprache' }
+      if (type === 'specialist') { return 'Spezialist' }
+      if (type === 'location') { return 'Standort' }
+    }
+
+    return (
+      <>
+        <span>{value ? 'Gefiltert nach' : 'Filtern nach'}</span>
+        <span>{value ? value : currentType()}</span>
+      </>
+    )
+  }
 
   function handleFilterAreaClick(type) {
     setFilterKey(type)
@@ -45,6 +59,12 @@ export default function FilterBar({ updateFilterOptions }) {
   function handleTagClick(e) {
     updateFilterOptions(filterKey, e.target.dataset.value)
     setPopupCollapsed(false)
+
+    setCurrentFilter({
+      ...currentFilter,
+      [filterKey]: e.target.dataset.value
+    })
+
   }
 
   function openPopup(filterType) {
@@ -91,7 +111,7 @@ const FilterAreaStyled = styled.button`
   font-weight: bold;
   cursor: pointer;
 
-  span {
+  span:nth-child(1) {
     display: block;
     font-weight: normal;
     font-size: 8px;

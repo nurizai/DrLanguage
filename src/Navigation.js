@@ -38,7 +38,7 @@ const FooterAreaStyled = styled(NavLink)`
     background-color: #4882BB;
 
     &.active {
-      background-color: #a6cdce;
+      background-color: #9fcacb;
   }
   }
 
@@ -46,7 +46,7 @@ const FooterAreaStyled = styled(NavLink)`
     background-color: #316EA9;
 
     &.active {
-      background-color: #a6cdce;
+      background-color: #9fcacb;
   }
   }
 
@@ -54,7 +54,7 @@ const FooterAreaStyled = styled(NavLink)`
     background-color: #21598F;
 
     &.active {
-      background-color: #a6cdce;
+      background-color: #9fcacb;
   }
   }
 `

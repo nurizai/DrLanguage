@@ -42,10 +42,7 @@ export default function Cards({
   return (
     <FullCardStyled>
       <BookmarkStyled onClick={(event) => handleBookmarkClick(event)} active={isBookmarked}/>
-      <CardImg>
-        <img src={photo} alt="Doctor" />
-        <img src={DrRanaAddress} alt="Address" />
-      </CardImg>
+      <img src={photo} alt="Doctor" />
       <CardStyled>
         <h2>{name}</h2>
         <h4>{specialist}</h4>
@@ -139,40 +136,32 @@ const CardButtonRightStyled = styled.a`
   display: inline-block;
   width: 50%;
   height: 40px;
-  background: #90ccc2;
+  background: #9fcacb;
   border-radius: 0 0 8px 0;
-  border: 0 solid #90ccc2;
+  border: 0 solid #9fcacb;
   cursor: pointer;
   text-align: center;
   padding-top: 8px;
 `
 
 const FullCardStyled = styled.section`
+  display: grid;
+  grid-template-rows: repeat(4, auto);
   height: auto;
   width: auto;
   position: relative;
   box-sizing: border-box;
   background-color: white;
   margin: 15px;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.9);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.7);
   border-radius: 8px;
-`
 
-const CardImg = styled.div`
-display: grid;
-grid-template-columns: 109px 244px;
-
-  & img:nth-of-type(1) {
-    height: 109px;
-    width: 100%;
+  > img {
+    display: block;
+    margin: 5px auto 0 auto;
+    height: 125px;
+    width: 125px;
     object-fit: cover;
-    border-top-left-radius: 8px;
-  }
-
-  & img:nth-of-type(2) {
-    border-top-right-radius: 8px;
-    width: 236px;
-    height: 109px;
-    object-fit: cover;
+    border-radius: 50%;
   }
 `

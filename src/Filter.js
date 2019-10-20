@@ -14,7 +14,6 @@ export default function Filter({ filtertags, specialized, address }) {
   }, [selectedFilter])
 
   function toggleFilter(filter, data) {
-   // console.log(data)
     filter === selectedFilter
       ? setSelectedFilter('')
       : (setSelectedFilter(filter) || setFilterData(data))

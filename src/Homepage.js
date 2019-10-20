@@ -16,7 +16,7 @@ export default function Homepage({cards, onBookmarkClick}) {
 
   function getSortedCards() {
     const sortedCards = cards.slice()
-    sortedCards.sort((a, b) => a.specialist - b.specialist)
+    sortedCards.sort((a, b) => a.name - b.name)
     return sortedCards
   }
 

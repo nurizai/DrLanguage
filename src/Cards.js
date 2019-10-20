@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import Tag from './Tag'
 import email from './icons/email.svg'
 import phone from './icons/phone.svg'
-import DrRanaAddress from './images/DrRanaAddress.svg'
 import {Star} from 'styled-icons/boxicons-solid/Star'
-import ReactMapGl from 'react-map-gl'
 
 export default function Cards({
   name,
@@ -43,10 +41,12 @@ export default function Cards({
     <FullCardStyled>
       <BookmarkStyled onClick={(event) => handleBookmarkClick(event)} active={isBookmarked}/>
       <img src={photo} alt="Doctor" />
+      <hr/>
       <CardStyled>
         <h2>{name}</h2>
         <h4>{specialist}</h4>
         {renderTags()}
+        <hr/>
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>
@@ -76,14 +76,13 @@ const BookmarkStyled = styled(Star)`
 `
 const CardStyled = styled.div`
   background: white;
-  padding: 10px;
   text-align: center;
 
   > h2 {
       font-family: 'Fira Sans';
+      margin: 0;
       color: #83909f;
-      display: inline;
-      margin: 5px 0;
+      display: block;
       font-size: 17px;
       font-weight: normal;
     }
@@ -94,7 +93,7 @@ const CardStyled = styled.div`
       line-height: 1.1;
       font-size: 14px;
       font-weight: 300;
-      margin: 7px 0;
+      margin: 5px 0;
     }
 
   > address {
@@ -106,10 +105,10 @@ const CardStyled = styled.div`
 
   > pre {
     display: block;
-    margin: 0;
+    margin: 5px auto;
     width: 15px;
     color: #4882bb;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
     cursor: pointer;
   }
@@ -152,16 +151,24 @@ const FullCardStyled = styled.section`
   position: relative;
   box-sizing: border-box;
   background-color: white;
-  margin: 15px;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.7);
+  margin: 20px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
   border-radius: 8px;
 
   > img {
     display: block;
-    margin: 5px auto 0 auto;
+    margin: 8px auto 0 auto;
     height: 125px;
     width: 125px;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.5);
+  }
+
+  hr {
+    width: 90%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
   }
 `

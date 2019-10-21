@@ -56,7 +56,7 @@ const AppStyled = styled.div`
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: rgba(248,248,248, 0.5);
+  background-color: #ebebeb;
 `
 
 export default App;

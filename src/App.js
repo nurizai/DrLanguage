@@ -1,42 +1,62 @@
-import React, { useState } from 'react';
-import Header from './Header'
+import React, { useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
-import Filter from './Filter'
-import cardData from './cards.json'
-import CardList from './CardList';
-
+import Homepage from './Homepage'
+import Navigation from './Navigation'
+import { getCards, patchCard, postCard } from './services'
+import GlobalStyles from './GlobalStyles';
+import SettingsPage from './SettingsPage'
+import BookmarksPage from './BookmarksPage';
 
 function App() {
-  const [cards, setCards] = useState(cardData)
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCards().then(setCards)
+  }, [])
+
+
   return (
-    <AppStyled>
-      <Header/>
-      <Filter filtertags={getFilterTags()}></Filter>
-      <CardList/>
-    </AppStyled>
-  );
+    <Router>
+      <AppStyled>
+        <GlobalStyles />
+        <Switch>
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} />} />
+          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Bookmarks" filteredCards={cards.filter(card => card.isBookmarked === true)}  />} />
+          <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
+        </Switch>
+        <Navigation />
+      </AppStyled>
+    </Router>
+  )
 
+  function createCard(cardData) {
+    postCard(cardData).then(card => {
+      setCards([...cards, card])
+    })
+  }
 
-  function getFilterTags() {
-    const filtertags = Array.from(cards.reduce((pre, acc) => {
-      acc.tags.forEach(tag => pre.add(tag))
-      return pre
-    }, new Set()))
-    return filtertags
+  function handleBookmarkClick(card) {
+    patchCard(card._id, { isBookmarked: !card.isBookmarked }).then(updateCard => {
+      const index = cards.findIndex(card => card._id === updateCard._id)
+      setCards([
+        ...cards.slice(0, index),
+        {...card, isBookmarked: updateCard.isBookmarked },
+        ...cards.slice(index + 1),
+      ])
+    })
   }
 }
 
 
 const AppStyled = styled.div`
-  display: grid;
-  grid-template-rows: 24px 36px auto;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: #EDF0F5;
+  background-color: #ebebeb;
 `
 
 export default App;

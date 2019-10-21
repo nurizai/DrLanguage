@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Tag({ text }) {
+export default function Tag({ tags, handleOnClick }) {
   return (
-    <TagStyled>{text}</TagStyled>
+    tags === 'alle' ? <TagStyled data-filter='option' data-value='' onClick={handleOnClick} key={tags}>{tags}</TagStyled>
+    : tags.map(tag => <TagStyled data-filter='option' data-value={tag} onClick={handleOnClick} key={tag}>{tag}</TagStyled>)
   )
 }
 
-const TagStyled = styled.li`
+const TagStyled = styled.div`
   display: inline-block;
-  font-family: Helvetica;
   font-size: 0.6rem;
-  padding: 10px 10px;
-  background: #235789;
+  padding: 9px;
+  background: #316ea9;
   color: white;
   border-radius: 5px;
   text-transform: uppercase;
-  margin: 5px;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
 `

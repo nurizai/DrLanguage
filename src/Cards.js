@@ -70,8 +70,8 @@ const BookmarkStyled = styled(Star)`
   width: 24px;
   height: 24px;
   position: absolute;
-  right: 2px;
-  top: 2px;
+  right: 7px;
+  top: 7px;
   color: ${props => (props.active ? '#f7a80b': '#83909f')};
 `
 const CardStyled = styled.div`
@@ -98,7 +98,7 @@ const CardStyled = styled.div`
 
   > address {
     margin: 7px 0;
-    font-size: 13px;
+    font-size: 14px;
     color: #83909f;
     font-weight: 300;
   }

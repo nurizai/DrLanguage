@@ -107,14 +107,14 @@ const FilterAreaStyled = styled.button`
   height: 48px;
   text-transform: uppercase;
   color: white;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   cursor: pointer;
 
   span:nth-child(1) {
     display: block;
     font-weight: normal;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   :nth-child(1) {

@@ -4,6 +4,9 @@ import Tag from './Tag'
 import email from './icons/email.svg'
 import phone from './icons/phone.svg'
 import {Star} from 'styled-icons/boxicons-solid/Star'
+import { Edit as EditButton } from 'styled-icons/material/Edit'
+import { DeleteButton } from 'styled-icons/material/Delete'
+import { Link } from 'react-router-dom'
 
 export default function Cards({
   name,
@@ -50,6 +53,7 @@ export default function Cards({
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>
+      <LinkStyled><EditSymbol/></LinkStyled>
       <CardButton>
         <CardButtonLeftStyled href={"mailto:" + emailAddress}><img src={email} alt="Email" /></CardButtonLeftStyled>
         <CardButtonRightStyled href={"tel:" + phoneNumber}><img src={phone} alt="Phone" /></CardButtonRightStyled>
@@ -67,13 +71,25 @@ export default function Cards({
 }
 
 const BookmarkStyled = styled(Star)`
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  right: 7px;
-  top: 7px;
-  color: ${props => (props.active ? '#f7a80b': '#83909f')};
+  right: 100px;
+  top: 90px;
+  stroke: #fff;
+  stroke-width: 1px;
+  color: ${props => (props.active ? '#f7a80b': '#cdcdcd')};
 `
+
+const EditSymbol = styled(EditButton)`
+  height: 24px;
+  width: 24px;
+`
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: gray;
+`
+
 const CardStyled = styled.div`
   background: white;
   text-align: center;
@@ -157,12 +173,13 @@ const FullCardStyled = styled.section`
 
   > img {
     display: block;
-    margin: 8px auto 0 auto;
+    margin: 15px auto;
     height: 125px;
     width: 125px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.5);
+    padding: 5px;
+    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.1);
   }
 
   hr {

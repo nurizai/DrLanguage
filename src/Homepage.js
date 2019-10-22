@@ -3,7 +3,6 @@ import FilterBar from './FilterBar'
 import CardList from './CardList';
 import styled from 'styled-components'
 
-
 export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditClick}) {
 
   // TODO: Pass filter to CardList where it is used to set filters

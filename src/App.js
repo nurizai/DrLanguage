@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
 import Homepage from './Homepage'
 import Navigation from './Navigation'
-import { getCards, patchCard, postCard } from './services'
+import { getCards, patchCard, postCard, deleteCard } from './services'
 import GlobalStyles from './GlobalStyles';
 import SettingsPage from './SettingsPage'
 import BookmarksPage from './BookmarksPage';
@@ -21,7 +21,7 @@ function App() {
       <AppStyled>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} />} />
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} />} />
           <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Bookmarks" filteredCards={cards.filter(card => card.isBookmarked === true)}  />} />
           <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
@@ -29,6 +29,7 @@ function App() {
       </AppStyled>
     </Router>
   )
+
 
   function createCard(cardData) {
     postCard(cardData).then(card => {
@@ -46,6 +47,13 @@ function App() {
       ])
     })
   }
+
+  function handleDeleteClick(card) {
+    const id = card._id
+    deleteCard(id)
+      .then(getCards().then(setCards))
+  }
+
 }
 
 

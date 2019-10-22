@@ -48,7 +48,6 @@ export default function SettingsPage({ onSubmit, title}) {
   return (
     <Page title={title}>
       <FormStyled onSubmit={uploadToCloudinary}>
-
         <LabelStyled>
           Name
         </LabelStyled>

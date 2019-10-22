@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import Page from './Page'
 import axios from 'axios'
 
-export default function SettingsPage({ onSubmit, title}) {
+export default function SettingsPage({ onSubmit, title }) {
 
   const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
   const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -48,10 +48,11 @@ export default function SettingsPage({ onSubmit, title}) {
   return (
     <Page title={title}>
       <FormStyled onSubmit={uploadToCloudinary}>
+
         <LabelStyled>
           Name
         </LabelStyled>
-        <input name="name" type="text" placeholder="Herr Dr. Max Mustermann"/>
+        <input name="name" type="text" placeholder="Herr Dr. Max Mustermann" />
         <LabelStyled>
           Foto
         </LabelStyled>
@@ -59,27 +60,27 @@ export default function SettingsPage({ onSubmit, title}) {
         <LabelStyled>
           Fachbereich
         </LabelStyled>
-        <input name="specialist" type="text" placeholder="Allgemeinarzt"/>
+        <input name="specialist" type="text" placeholder="Allgemeinarzt" />
         <LabelStyled>
           Sprache(n)
         </LabelStyled>
-        <input name="tags" type="text" placeholder="Deutsch Englisch Farsi"/>
+        <input name="tags" type="text" placeholder="Deutsch Englisch Farsi" />
         <LabelStyled>
           Straße/Nr.
         </LabelStyled>
-        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12"/>
+        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12" />
         <LabelStyled>
           PLZ/Ort
         </LabelStyled>
-        <input name="location" type="text" placeholder="12248 Hamburg"/>
+        <input name="location" type="text" placeholder="12248 Hamburg" />
         <LabelStyled>
           Telefon
         </LabelStyled>
-        <input name="phoneNumber" type="text" placeholder="040 76 37 474"/>
+        <input name="phoneNumber" type="text" placeholder="040 76 37 474" />
         <LabelStyled>
           E-Mail
         </LabelStyled>
-        <input name="emailaddress" type="text" placeholder="maxmustermann@gmail.de"/>
+        <input name="emailaddress" type="text" placeholder="maxmustermann@gmail.de" />
 
       <ButtonStyled>
         Create card

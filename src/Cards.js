@@ -17,6 +17,7 @@ export default function Cards({
   location,
   onBookmarkClick,
   onDeleteClick,
+  onEditClick,
   isBookmarked,
   emailAddress,
   phoneNumber
@@ -46,6 +47,11 @@ export default function Cards({
     onDeleteClick()
   }
 
+  function handleEditClick(event) {
+    event.stopPropagation()
+    onEditClick()
+  }
+
   return (
     <FullCardStyled>
       <BookmarkStyled onClick={(event) => handleBookmarkClick(event)} active={isBookmarked}/>
@@ -59,7 +65,7 @@ export default function Cards({
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>
-      <LinkEditStyled to='/'><EditSymbol/></LinkEditStyled>
+      <LinkEditStyled to='/' onClick={(event) => handleEditClick(event)}><EditSymbol/></LinkEditStyled>
       <LinkDeleteStyled to='/' onClick={(event) => handleDeleteClick(event)}><DeleteSymbol/></LinkDeleteStyled>
       <CardButton>
         <CardButtonLeftStyled href={"mailto:" + emailAddress}><img src={email} alt="Email" /></CardButtonLeftStyled>

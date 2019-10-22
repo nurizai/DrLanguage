@@ -9,6 +9,7 @@ import SettingsPage from './SettingsPage'
 import BookmarksPage from './BookmarksPage';
 
 function App() {
+
   const [cards, setCards] = useState([])
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function App() {
       <AppStyled>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} />} />
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />} />
           <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Bookmarks" filteredCards={cards.filter(card => card.isBookmarked === true)}  />} />
           <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
         </Switch>
@@ -50,8 +51,11 @@ function App() {
 
   function handleDeleteClick(card) {
     const id = card._id
-    deleteCard(id)
-      .then(getCards().then(setCards))
+    deleteCard(id).then(getCards().then(setCards))
+  }
+
+  function handleEditClick(card) {
+    console.log(card)
   }
 
 }

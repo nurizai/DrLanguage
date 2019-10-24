@@ -2,8 +2,11 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import Page from './Page'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 export default function SettingsPage({ onSubmit, title }) {
+
+  const history = useHistory()
 
   const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
   const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -42,7 +45,7 @@ export default function SettingsPage({ onSubmit, title }) {
 
     onSubmit(formattedData)
     form.reset()
-    form.name.focus()
+    history.push('/')
   }
 
   return (

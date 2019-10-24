@@ -12,7 +12,7 @@ const TagStyled = styled.div`
   display: inline-block;
   font-size: 10px;
   padding: 9px;
-  background: #316ea9;
+  background: #316ea9d9;
   color: white;
   border-radius: 5px;
   text-transform: uppercase;

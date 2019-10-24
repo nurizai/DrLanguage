@@ -14,7 +14,13 @@ function App() {
   const [cards, setCards] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [editContent, setEditContent] = useState({
-    name: ''
+    name: '',
+    specialist: '',
+    tags: '',
+    address: '',
+    location: '',
+    phoneNumber: '',
+    emailaddress: ''
   })
 
   useEffect(() => {
@@ -28,10 +34,16 @@ function App() {
         <EditModal show={showModal}>
           <DeleteBtn onClick={() => setShowModal(false)} />
           <div>
-            <form onSubmit={editCard}>
+            <FormStyled onSubmit={editCard}>
               <input name="name" type="text" placeholder="Name" value={editContent.name} onChange={e => setEditContent({...editContent, name: e.target.value})} />
+              <input name="specialist" type="text" placeholder="Specialist" value={editContent.specialist} onChange={e => setEditContent({...editContent, specialist: e.target.value})} />
+              <input name="tags" type="text" placeholder="Tags" value={editContent.tags} onChange={e => setEditContent({...editContent, tags: e.target.value})} />
+              <input name="address" type="text" placeholder="Address" value={editContent.address} onChange={e => setEditContent({...editContent, address: e.target.value})} />
+              <input name="location" type="text" placeholder="Location" value={editContent.location} onChange={e => setEditContent({...editContent, location: e.target.value})} />
+              <input name="phoneNumber" type="text" placeholder="PhoneNumber" value={editContent.phoneNumber} onChange={e => setEditContent({...editContent, phoneNumber: e.target.value})} />
+              <input name="emailaddress" type="text" placeholder="Emailaddress" value={editContent.emailaddress} onChange={e => setEditContent({...editContent, emailaddress: e.target.value})} />
               <button>Edit</button>
-            </form>
+            </FormStyled>
           </div>
         </EditModal>
         <Switch>
@@ -55,12 +67,20 @@ function App() {
     e.preventDefault()
     const id = editContent._id
 
-    patchCard(id, { name: editContent.name })
+    patchCard(id, {
+      name: editContent.name,
+      specialist: editContent.specialist,
+      tags: editContent.tags.split(" ").map(tag => tag.toLowerCase()),
+      address: editContent.address,
+      location: editContent.location,
+      phoneNumber: editContent.phoneNumber,
+      emailaddress: editContent.emailaddress
+    })
       .then(updateCard => {
         const index = cards.findIndex(card => card._id === updateCard._id)
         setCards([
           ...cards.slice(0, index),
-          {...updateCard, name: updateCard.name},
+          {...updateCard},
           ...cards.slice(index + 1)
         ])
       })
@@ -85,7 +105,10 @@ function App() {
   }
 
   function handleEditClick(card) {
-    setEditContent(card)
+    setEditContent({
+      ...card,
+      tags: card.tags.join(' ')
+    })
     setShowModal(true)
   }
 
@@ -100,6 +123,13 @@ const AppStyled = styled.div`
   bottom: 0;
   height: 100%;
   background-color: #ebebeb;
+`
+
+const FormStyled = styled.form`
+  display: grid;
+  grid-auto-rows: repeat(7, 1fr);
+  padding: 20px;
+  margin-top: 36px;
 `
 
 const DeleteBtn = styled(Delete)`
@@ -129,9 +159,28 @@ const EditModal = styled.div`
     width: 90vw;
     height: 90vh;
 
-    input {
-      width: 100%;
-      padding: 10px;
+   input {
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+
+      &:hover {
+        border: 1px solid #4882BB;
+      }
+    }
+
+    button {
+    margin: 10px;;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    background: #316ea9;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
     }
   }
 `

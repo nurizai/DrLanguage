@@ -91,7 +91,7 @@ const BookmarkStyled = styled(Star)`
   top: 90px;
   stroke: #fff;
   stroke-width: 1px;
-  color: ${props => (props.active ? '#f7a80b': '#cdcdcd')};
+  color: ${props => (props.active ? '#fadf7f': '#cdcdcd')};
 `
 
 const EditSymbol = styled(EditButton)`
@@ -195,8 +195,8 @@ const FullCardStyled = styled.section`
   position: relative;
   box-sizing: border-box;
   background-color: white;
-  margin: 20px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+  margin: 15px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3);
   border-radius: 8px;
 
   > img {

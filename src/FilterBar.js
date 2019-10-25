@@ -19,15 +19,19 @@ export default function FilterBar({ updateFilterOptions }) {
     location: ''
   })
 
+  window.addEventListener('click', e => {
+    e.target.classList.contains('js-open-filter') || setPopupCollapsed(false)
+  })
+
   const currentLanguage = currentFilter.language
   const currentSpecialist = currentFilter.specialist
   const currentLocation = currentFilter.location
 
   return (
     <FilterBarStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('language')}>{renderFilterArea('language', currentLanguage)}</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('specialist')}>{renderFilterArea('specialist', currentSpecialist)}</FilterAreaStyled>
-      <FilterAreaStyled onClick={() => handleFilterAreaClick('location')}>{renderFilterArea('location', currentLocation)}</FilterAreaStyled>
+      <FilterAreaStyled className='js-open-filter' onClick={() => handleFilterAreaClick('language')}>{renderFilterArea('language', currentLanguage)}</FilterAreaStyled>
+      <FilterAreaStyled className='js-open-filter' onClick={() => handleFilterAreaClick('specialist')}>{renderFilterArea('specialist', currentSpecialist)}</FilterAreaStyled>
+      <FilterAreaStyled className='js-open-filter' onClick={() => handleFilterAreaClick('location')}>{renderFilterArea('location', currentLocation)}</FilterAreaStyled>
       {popupCollapsed &&
       <Popup>
         <Tag handleOnClick={(e) => handleTagClick(e)} key='all' tags='alle' />
@@ -45,8 +49,8 @@ export default function FilterBar({ updateFilterOptions }) {
 
     return (
       <>
-        <span>{value ? 'Gefiltert nach' : 'Filtern nach'}</span>
-        <span>{value ? value : currentType()}</span>
+        <span className='js-open-filter'>{value ? 'Gefiltert nach' : 'Filtern nach'}</span>
+        <span className='js-open-filter'>{value ? value : currentType()}</span>
       </>
     )
   }

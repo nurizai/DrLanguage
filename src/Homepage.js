@@ -3,7 +3,7 @@ import FilterBar from './FilterBar'
 import CardList from './CardList';
 import styled from 'styled-components'
 
-export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditClick}) {
+export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditClick, goToMap}) {
 
   // TODO: Pass filter to CardList where it is used to set filters
   // TODO: Set to array later in order to filter with multiple choices
@@ -29,7 +29,7 @@ export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditC
   return (
     <HomepageStyled>
       <FilterBar updateFilterOptions={(key, value) => updateFilterOptions(key, value)} />
-      <CardList cards={getSortedCards()} onBookmarkClick={onBookmarkClick} onDeleteClick={onDeleteClick} onEditClick={onEditClick} filter={filter} />
+      <CardList cards={getSortedCards()} onBookmarkClick={onBookmarkClick} onDeleteClick={onDeleteClick} onEditClick={onEditClick} filter={filter} goToMap={goToMap} />
     </HomepageStyled>
   )
 

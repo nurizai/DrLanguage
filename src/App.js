@@ -8,6 +8,7 @@ import GlobalStyles from './GlobalStyles';
 import SettingsPage from './SettingsPage'
 import BookmarksPage from './BookmarksPage';
 import { Delete } from 'styled-icons/typicons/Delete'
+import Map from './Map'
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
     location: '',
     phoneNumber: '',
     emailaddress: ''
+  })
+  const [dataForMap, setDataForMap] = useState({
+    address: '',
+    location: ''
   })
 
   useEffect(() => {
@@ -47,14 +52,22 @@ function App() {
           </div>
         </EditModal>
         <Switch>
-          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />} />
-          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Bookmarks" filteredCards={cards.filter(card => card.isBookmarked === true)}  />} />
-          <Route path="/settings" render={() => <SettingsPage title="Settings" onSubmit={createCard} />} />
+          <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} goToMap={goToMap} />} />
+          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Favoriten" filteredCards={cards.filter(card => card.isBookmarked === true)} onEditClick={handleEditClick}  />} />
+          <Route path="/settings" render={() => <SettingsPage title="Ärzte hinzufügen" onSubmit={createCard} />} />
+          <Route path="/map" render={() => <Map title="Karte" data={dataForMap} />} />
         </Switch>
         <Navigation />
       </AppStyled>
     </Router>
   )
+
+  function goToMap(cardData) {
+    setDataForMap({
+      address: cardData.address,
+      location: cardData.location
+    })
+  }
 
 
   function createCard(cardData) {

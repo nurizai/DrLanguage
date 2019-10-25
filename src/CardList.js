@@ -2,7 +2,7 @@ import React from 'react'
 import Cards from './Cards'
 import styled from 'styled-components/macro'
 
-export default function CardList({ cards, onBookmarkClick, onDeleteClick, onEditClick, filter }) {
+export default function CardList({ cards, onBookmarkClick, onDeleteClick, onEditClick, filter, goToMap }) {
 // eslint-disable-next-line
   //const [cards, setCards] = useState(cardData)
 
@@ -60,7 +60,7 @@ export default function CardList({ cards, onBookmarkClick, onDeleteClick, onEdit
   return (
     <CardListStyled>
     {filteredCards.map(card => (
-          <Cards key={card._id} {...card} onBookmarkClick={() => onBookmarkClick(card)} onDeleteClick={() => onDeleteClick(card)} onEditClick={() => onEditClick(card)} />
+          <Cards key={card._id} {...card} onBookmarkClick={() => onBookmarkClick(card)} onDeleteClick={() => onDeleteClick(card)} onEditClick={() => onEditClick(card)} goToMap={() => goToMap(card)} />
         ))}
     </CardListStyled>
   )

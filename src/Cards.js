@@ -7,6 +7,7 @@ import {Star} from 'styled-icons/boxicons-solid/Star'
 import { Edit as EditButton } from 'styled-icons/material/Edit'
 import { Delete } from 'styled-icons/typicons/Delete'
 import { Link } from 'react-router-dom'
+import Map from './Map'
 
 export default function Cards({
   name,
@@ -20,7 +21,8 @@ export default function Cards({
   onEditClick,
   isBookmarked,
   emailAddress,
-  phoneNumber
+  phoneNumber,
+  goToMap
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -30,10 +32,10 @@ export default function Cards({
 
   function renderDetails() {
     return (
-      <>
+      <Link to='/map' onClick={goToMap}>
         <address>{address}</address>
         <address>{location}</address>
-      </>
+      </Link>
     )
   }
 

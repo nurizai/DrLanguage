@@ -38,8 +38,8 @@ export default function Cards({
     font-weight: 300;
 
     div {
-      padding: 5px;
-      margin: 0 5px 10px 5px;
+      padding: 5px 10px 10px 10px;
+      margin: 5px;
       text-align: justify;
       hyphens: auto;
       white-space: normal;
@@ -63,6 +63,7 @@ export default function Cards({
     return (
       <RenderDetailsStyled>
       <div>{description}</div>
+      <hr/>
       <Link to='/map' onClick={goToMap}>
         <p>{address}</p>
         <p>{location}</p>

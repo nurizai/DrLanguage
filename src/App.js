@@ -24,9 +24,11 @@ function App() {
     email: '',
     description: ''
   })
+
+  // Change to longitude, latitude
   const [dataForMap, setDataForMap] = useState({
-    address: '',
-    location: ''
+    latitude: 53.551086,
+    longitude: 9.993682
   })
 
   useEffect(() => {
@@ -66,8 +68,8 @@ function App() {
 
   function goToMap(cardData) {
     setDataForMap({
-      address: cardData.address,
-      location: cardData.location
+      latitude: cardData.latitude,
+      longitude: cardData.longitude
     })
   }
 

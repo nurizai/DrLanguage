@@ -26,6 +26,8 @@ const FooterStyled = styled.div`
   display: grid;
   font-size: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px;
+  background-color: #21598F;
   z-index: 10000;
 `
 const FooterAreaStyled = styled(NavLink)`

@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 export default function Cards({
   name,
   specialist,
+  description,
   address,
   tags,
   photo,
@@ -30,11 +31,43 @@ export default function Cards({
   }
 
   function renderDetails() {
+
+    const RenderDetailsStyled = styled.div`
+    font-size: 14px;
+    color: #83909f;
+    font-weight: 300;
+
+    div {
+      padding: 5px;
+      margin: 0 5px 10px 5px;
+      text-align: justify;
+      hyphens: auto;
+      white-space: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
+
+    a {
+      text-decoration: none;
+      color: #83909f;
+      margin: 10px auto;
+    }
+
+    p {
+      margin: 0 auto;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    `
+
     return (
-      <MapLinkStyled to='/map' onClick={goToMap}>
-        <address>{address}</address>
-        <address>{location}</address>
-      </MapLinkStyled>
+      <RenderDetailsStyled>
+      <div>{description}</div>
+      <Link to='/map' onClick={goToMap}>
+        <p>{address}</p>
+        <p>{location}</p>
+      </Link>
+      </RenderDetailsStyled>
     )
   }
 
@@ -84,12 +117,6 @@ export default function Cards({
   }
 }
 
-const MapLinkStyled = styled(Link)`
-    font-size: 14px;
-    color: #83909f;
-    font-weight: 300;
-    text-decoration: none;
-`
 
 const BookmarkStyled = styled(Star)`
   width: 40px;
@@ -163,6 +190,7 @@ const CardButton = styled.div`
 `
 
 const CardButtonLeftStyled = styled.a`
+  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -176,6 +204,7 @@ const CardButtonLeftStyled = styled.a`
 `
 
 const CardButtonRightStyled = styled.a`
+  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -197,7 +226,7 @@ const FullCardStyled = styled.section`
   box-sizing: border-box;
   background-color: white;
   margin: 15px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
   border-radius: 8px;
 
   > img {

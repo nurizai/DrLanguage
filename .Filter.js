@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Tag from './Tag';
+import Tag from './src/Tag';
 
-export default function Filter({ filtertags, specialized, address }) {
+function Filter({ filtertags, specialized, address }) {
   const [selectedFilter, setSelectedFilter] = useState('')
   const [filterData, setFilterData] = useState()
   const [collapsed, setCollapsed] = useState(false)

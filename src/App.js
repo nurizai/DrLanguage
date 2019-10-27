@@ -21,7 +21,8 @@ function App() {
     address: '',
     location: '',
     phoneNumber: '',
-    email: ''
+    email: '',
+    description: ''
   })
   const [dataForMap, setDataForMap] = useState({
     address: '',
@@ -41,13 +42,14 @@ function App() {
           <div>
             <FormStyled onSubmit={editCard}>
               <input name="name" type="text" placeholder="Name" value={editContent.name} onChange={e => setEditContent({...editContent, name: e.target.value})} />
-              <input name="specialist" type="text" placeholder="Specialist" value={editContent.specialist} onChange={e => setEditContent({...editContent, specialist: e.target.value})} />
-              <input name="tags" type="text" placeholder="Tags" value={editContent.tags} onChange={e => setEditContent({...editContent, tags: e.target.value})} />
-              <input name="address" type="text" placeholder="Address" value={editContent.address} onChange={e => setEditContent({...editContent, address: e.target.value})} />
-              <input name="location" type="text" placeholder="Location" value={editContent.location} onChange={e => setEditContent({...editContent, location: e.target.value})} />
-              <input name="phoneNumber" type="text" placeholder="PhoneNumber" value={editContent.phoneNumber} onChange={e => setEditContent({...editContent, phoneNumber: e.target.value})} />
-              <input name="email" type="text" placeholder="email" value={editContent.email} onChange={e => setEditContent({...editContent, email: e.target.value})} />
-              <button>Edit</button>
+              <input name="specialist" type="text" placeholder="Fachbereich" value={editContent.specialist} onChange={e => setEditContent({...editContent, specialist: e.target.value})} />
+              <input name="tags" type="text" placeholder="Sprachen" value={editContent.tags} onChange={e => setEditContent({...editContent, tags: e.target.value})} />
+              <input name="address" type="text" placeholder="Straße und Hausnummer" value={editContent.address} onChange={e => setEditContent({...editContent, address: e.target.value})} />
+              <textarea name="description" placeholder="Beschreibung ändern" value={editContent.description} onChange={e => setEditContent({...editContent, description: e.target.value})} />
+              <input name="location" type="text" placeholder="Ort/PLZ" value={editContent.location} onChange={e => setEditContent({...editContent, location: e.target.value})} />
+              <input name="phoneNumber" type="text" placeholder="Telefon" value={editContent.phoneNumber} onChange={e => setEditContent({...editContent, phoneNumber: e.target.value})} />
+              <input name="email" type="text" placeholder="E-mail" value={editContent.email} onChange={e => setEditContent({...editContent, email: e.target.value})} />
+              <button>Speichern</button>
             </FormStyled>
           </div>
         </EditModal>
@@ -84,10 +86,11 @@ function App() {
       name: editContent.name,
       specialist: editContent.specialist,
       tags: editContent.tags.split(" ").map(tag => tag.toLowerCase()),
+      description: editContent.description,
       address: editContent.address,
       location: editContent.location,
       phoneNumber: editContent.phoneNumber,
-      email: editContent.email
+      email: editContent.email,
     })
       .then(updateCard => {
         const index = cards.findIndex(card => card._id === updateCard._id)
@@ -117,10 +120,12 @@ function App() {
     deleteCard(id).then(getCards().then(setCards))
   }
 
+  // TODO: For all keys, do the same like for description !!!
   function handleEditClick(card) {
     setEditContent({
       ...card,
-      tags: card.tags.join(' ')
+      tags: card.tags.join(' '),
+      description: card.description ? card.description : ''
     })
     setShowModal(true)
   }
@@ -142,7 +147,7 @@ const FormStyled = styled.form`
   display: grid;
   grid-auto-rows: repeat(7, 1fr);
   padding: 20px;
-  margin-top: 36px;
+  margin: auto;;
 `
 
 const DeleteBtn = styled(Delete)`
@@ -159,7 +164,7 @@ const EditModal = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-  z-index: 1000;
+  z-index: 100000;
   background: #00000080;
   width: 100vw;
   height: 100vh;
@@ -173,6 +178,19 @@ const EditModal = styled.div`
     height: 90vh;
 
    input {
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+
+      &:hover {
+        border: 1px solid #4882BB;
+      }
+    }
+
+    textarea {
     margin: 10px;
     box-sizing: border-box;
     padding: 8px;

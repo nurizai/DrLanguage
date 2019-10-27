@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag'
-import email from './icons/email.svg'
+import EmailIcon from './icons/email.svg'
 import phone from './icons/phone.svg'
 import {Star} from 'styled-icons/boxicons-solid/Star'
 import { Edit as EditButton } from 'styled-icons/material/Edit'
 import { Delete } from 'styled-icons/typicons/Delete'
 import { Link } from 'react-router-dom'
-import Map from './Map'
 
 export default function Cards({
   name,
@@ -20,7 +19,7 @@ export default function Cards({
   onDeleteClick,
   onEditClick,
   isBookmarked,
-  emailAddress,
+  email,
   phoneNumber,
   goToMap
 }) {
@@ -32,10 +31,10 @@ export default function Cards({
 
   function renderDetails() {
     return (
-      <Link to='/map' onClick={goToMap}>
+      <MapLinkStyled to='/map' onClick={goToMap}>
         <address>{address}</address>
         <address>{location}</address>
-      </Link>
+      </MapLinkStyled>
     )
   }
 
@@ -70,7 +69,7 @@ export default function Cards({
       <LinkEditStyled to='/' onClick={(event) => handleEditClick(event)}><EditSymbol/></LinkEditStyled>
       <LinkDeleteStyled to='/' onClick={(event) => handleDeleteClick(event)}><DeleteSymbol/></LinkDeleteStyled>
       <CardButton>
-        <CardButtonLeftStyled href={"mailto:" + emailAddress}><img src={email} alt="Email" /></CardButtonLeftStyled>
+        <CardButtonLeftStyled href={"mailto:" + email}><img src={EmailIcon} alt="Email" /></CardButtonLeftStyled>
         <CardButtonRightStyled href={"tel:" + phoneNumber}><img src={phone} alt="Phone" /></CardButtonRightStyled>
       </CardButton>
     </FullCardStyled>
@@ -85,6 +84,13 @@ export default function Cards({
   }
 }
 
+const MapLinkStyled = styled(Link)`
+    font-size: 14px;
+    color: #83909f;
+    font-weight: 300;
+    text-decoration: none;
+`
+
 const BookmarkStyled = styled(Star)`
   width: 40px;
   height: 40px;
@@ -94,6 +100,39 @@ const BookmarkStyled = styled(Star)`
   stroke: #fff;
   stroke-width: 1px;
   color: ${props => (props.active ? '#fadf7f': '#cdcdcd')};
+`
+
+const CardStyled = styled.div`
+  background: white;
+  text-align: center;
+
+  > h2 {
+      font-family: 'Fira Sans';
+      margin: 0;
+      color: #83909f;
+      display: block;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+    > h4 {
+      font-family: 'Fira Sans';
+      color: #83909f;
+      line-height: 1.1;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 5px 0;
+    }
+
+  > pre {
+    display: block;
+    margin: 5px auto;
+    width: 15px;
+    color: #4882bb;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+  }
 `
 
 const EditSymbol = styled(EditButton)`
@@ -119,46 +158,6 @@ const LinkDeleteStyled = styled(Link)`
   top: 7px;
 `
 
-
-const CardStyled = styled.div`
-  background: white;
-  text-align: center;
-
-  > h2 {
-      font-family: 'Fira Sans';
-      margin: 0;
-      color: #83909f;
-      display: block;
-      font-size: 17px;
-      font-weight: normal;
-    }
-
-    > h4 {
-      font-family: 'Fira Sans';
-      color: #83909f;
-      line-height: 1.1;
-      font-size: 14px;
-      font-weight: 300;
-      margin: 5px 0;
-    }
-
-  > address {
-    margin: 7px 0;
-    font-size: 14px;
-    color: #83909f;
-    font-weight: 300;
-  }
-
-  > pre {
-    display: block;
-    margin: 5px auto;
-    width: 15px;
-    color: #4882bb;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-`
 const CardButton = styled.div`
   display: inline;
 `

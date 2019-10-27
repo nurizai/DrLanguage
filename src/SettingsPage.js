@@ -83,10 +83,10 @@ export default function SettingsPage({ onSubmit, title }) {
         <LabelStyled>
           E-Mail
         </LabelStyled>
-        <input name="emailaddress" type="text" placeholder="maxmustermann@gmail.de" />
+        <input name="email" type="text" placeholder="maxmustermann@gmail.de" />
 
       <ButtonStyled>
-        Create card
+        Karte erstellen
       </ButtonStyled>
 
       </FormStyled>

@@ -36,36 +36,9 @@ const FooterAreaStyled = styled(NavLink)`
   color: white;
   text-decoration: none;
   font-weight: bold;
-
-  :nth-child(1) {
-    background-color: #86b3cd;
+  background-color: #4882BB;
 
     &.active {
       background-color: #9fcacb;
-  }
-  }
-
-  :nth-child(2) {
-    background-color: #4882BB;
-
-    &.active {
-      background-color: #9fcacb;
-  }
-  }
-
-  :nth-child(3) {
-    background-color: #316EA9;
-
-    &.active {
-      background-color: #9fcacb;
-  }
-  }
-
-  :nth-child(4) {
-    background-color: #21598F;
-
-    &.active {
-      background-color: #9fcacb;
-    }
   }
 `

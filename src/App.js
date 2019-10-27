@@ -21,7 +21,7 @@ function App() {
     address: '',
     location: '',
     phoneNumber: '',
-    emailaddress: ''
+    email: ''
   })
   const [dataForMap, setDataForMap] = useState({
     address: '',
@@ -46,7 +46,7 @@ function App() {
               <input name="address" type="text" placeholder="Address" value={editContent.address} onChange={e => setEditContent({...editContent, address: e.target.value})} />
               <input name="location" type="text" placeholder="Location" value={editContent.location} onChange={e => setEditContent({...editContent, location: e.target.value})} />
               <input name="phoneNumber" type="text" placeholder="PhoneNumber" value={editContent.phoneNumber} onChange={e => setEditContent({...editContent, phoneNumber: e.target.value})} />
-              <input name="emailaddress" type="text" placeholder="Emailaddress" value={editContent.emailaddress} onChange={e => setEditContent({...editContent, emailaddress: e.target.value})} />
+              <input name="email" type="text" placeholder="email" value={editContent.email} onChange={e => setEditContent({...editContent, email: e.target.value})} />
               <button>Edit</button>
             </FormStyled>
           </div>
@@ -87,7 +87,7 @@ function App() {
       address: editContent.address,
       location: editContent.location,
       phoneNumber: editContent.phoneNumber,
-      emailaddress: editContent.emailaddress
+      email: editContent.email
     })
       .then(updateCard => {
         const index = cards.findIndex(card => card._id === updateCard._id)
@@ -135,7 +135,7 @@ const AppStyled = styled.div`
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: #ebebeb;
+  background-color: #f5f5f5;
 `
 
 const FormStyled = styled.form`

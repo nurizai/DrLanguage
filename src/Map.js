@@ -3,7 +3,9 @@ import Page from './Page'
 
 export default function Map({ title, data }) {
 
-  console.log(data)
+  const token = process.env.REACT_APP_MAPBOX_TOKEN
+
+  console.log(token)
 
   return (
     <Page title={title}>

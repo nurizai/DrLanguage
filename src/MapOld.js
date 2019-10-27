@@ -20,7 +20,7 @@ export default function Map({ title, data }) {
   return (
     <Page title={title}>
       <MapGl {...viewport}
-      mapboxApiAccessToken={"pk.eyJ1IjoibnVyaTkyIiwiYSI6ImNrMjRsNHIzMzBnbnkzZ3J3MXd3OXB1Z3EifQ.k46K4QsDr5_y2mAlSq8HcA"}
+      mapboxApiAccessToken={""}
       mapStyle="mapbox://styles/nuri92/ck25zvu6l05ew1co4hec0mj1i"
       onViewportChange={viewport => {
         setViewport(viewport);

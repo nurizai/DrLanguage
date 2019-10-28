@@ -1,21 +1,28 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag'
-import email from './icons/email.svg'
+import EmailIcon from './icons/email.svg'
 import phone from './icons/phone.svg'
 import {Star} from 'styled-icons/boxicons-solid/Star'
+import { Edit as EditButton } from 'styled-icons/material/Edit'
+import { Delete } from 'styled-icons/typicons/Delete'
+import { Link } from 'react-router-dom'
 
 export default function Cards({
   name,
   specialist,
+  description,
   address,
   tags,
   photo,
   location,
   onBookmarkClick,
+  onDeleteClick,
+  onEditClick,
   isBookmarked,
-  emailAddress,
-  phoneNumber
+  email,
+  phoneNumber,
+  goToMap
 }) {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -24,17 +31,60 @@ export default function Cards({
   }
 
   function renderDetails() {
+
+    const RenderDetailsStyled = styled.div`
+    font-size: 14px;
+    color: #83909f;
+    font-weight: 300;
+
+    div {
+      padding: 5px 10px 10px 10px;
+      margin: 5px;
+      text-align: justify;
+      hyphens: auto;
+      white-space: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
+
+    a {
+      text-decoration: none;
+      color: #83909f;
+      margin: 10px auto;
+    }
+
+    p {
+      margin: 0 auto;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    `
+
     return (
-      <>
-        <address>{address}</address>
-        <address>{location}</address>
-      </>
+      <RenderDetailsStyled>
+      <div>{description}</div>
+      <hr/>
+      <Link to='/map' onClick={goToMap}>
+        <p>{address}</p>
+        <p>{location}</p>
+      </Link>
+      </RenderDetailsStyled>
     )
   }
 
   function handleBookmarkClick(event) {
     event.stopPropagation()
     onBookmarkClick()
+  }
+
+  function handleDeleteClick(event) {
+    event.stopPropagation()
+    onDeleteClick()
+  }
+
+  function handleEditClick(event) {
+    event.stopPropagation()
+    onEditClick()
   }
 
   return (
@@ -50,8 +100,10 @@ export default function Cards({
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
         {collapsed && renderDetails()}
       </CardStyled>
+      <LinkEditStyled to='/' onClick={(event) => handleEditClick(event)}><EditSymbol/></LinkEditStyled>
+      <LinkDeleteStyled to='/' onClick={(event) => handleDeleteClick(event)}><DeleteSymbol/></LinkDeleteStyled>
       <CardButton>
-        <CardButtonLeftStyled href={"mailto:" + emailAddress}><img src={email} alt="Email" /></CardButtonLeftStyled>
+        <CardButtonLeftStyled href={"mailto:" + email}><img src={EmailIcon} alt="Email" /></CardButtonLeftStyled>
         <CardButtonRightStyled href={"tel:" + phoneNumber}><img src={phone} alt="Phone" /></CardButtonRightStyled>
       </CardButton>
     </FullCardStyled>
@@ -66,14 +118,18 @@ export default function Cards({
   }
 }
 
+
 const BookmarkStyled = styled(Star)`
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  right: 7px;
-  top: 7px;
-  color: ${props => (props.active ? '#f7a80b': '#83909f')};
+  right: 100px;
+  top: 90px;
+  stroke: #fff;
+  stroke-width: 1px;
+  color: ${props => (props.active ? '#fadf7f': '#cdcdcd')};
 `
+
 const CardStyled = styled.div`
   background: white;
   text-align: center;
@@ -96,13 +152,6 @@ const CardStyled = styled.div`
       margin: 5px 0;
     }
 
-  > address {
-    margin: 7px 0;
-    font-size: 14px;
-    color: #83909f;
-    font-weight: 300;
-  }
-
   > pre {
     display: block;
     margin: 5px auto;
@@ -113,11 +162,36 @@ const CardStyled = styled.div`
     cursor: pointer;
   }
 `
+
+const EditSymbol = styled(EditButton)`
+  height: 24px;
+  width: 24px;
+`
+const LinkEditStyled = styled(Link)`
+  text-decoration: none;
+  color: gray;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+`
+const DeleteSymbol = styled(Delete)`
+  height: 30px;
+  width: 30px;
+`
+const LinkDeleteStyled = styled(Link)`
+  text-decoration: none;
+  color: gray;
+  position: absolute;
+  left: 7px;
+  top: 7px;
+`
+
 const CardButton = styled.div`
   display: inline;
 `
 
 const CardButtonLeftStyled = styled.a`
+  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -131,6 +205,7 @@ const CardButtonLeftStyled = styled.a`
 `
 
 const CardButtonRightStyled = styled.a`
+  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -151,18 +226,19 @@ const FullCardStyled = styled.section`
   position: relative;
   box-sizing: border-box;
   background-color: white;
-  margin: 20px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+  margin: 15px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
   border-radius: 8px;
 
   > img {
     display: block;
-    margin: 8px auto 0 auto;
+    margin: 15px auto;
     height: 125px;
     width: 125px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.5);
+    padding: 5px;
+    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.1);
   }
 
   hr {

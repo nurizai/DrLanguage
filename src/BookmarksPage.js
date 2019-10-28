@@ -2,7 +2,7 @@ import React from 'react'
 import CardList from './CardList'
 import Page from './Page'
 
-export default function BookmarksPage({ title, filteredCards, onBookmarkClick }) {
+export default function BookmarksPage({ title, filteredCards, onBookmarkClick, onEditClick }) {
 
   // Empty values because cards on BookmarkPage are not filtered
   const filter = {
@@ -13,7 +13,7 @@ export default function BookmarksPage({ title, filteredCards, onBookmarkClick })
 
   return (
     <Page title={title}>
-      <CardList cards={filteredCards} onBookmarkClick={onBookmarkClick} filter={filter}></CardList>
+      <CardList cards={filteredCards} onBookmarkClick={onBookmarkClick} filter={filter} onEditClick={onEditClick}></CardList>
     </Page>
   )
 }

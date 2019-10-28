@@ -2,8 +2,11 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import Page from './Page'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
-export default function SettingsPage({ onSubmit, title}) {
+export default function SettingsPage({ onSubmit, title }) {
+
+  const history = useHistory()
 
   const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
   const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -42,7 +45,7 @@ export default function SettingsPage({ onSubmit, title}) {
 
     onSubmit(formattedData)
     form.reset()
-    form.name.focus()
+    history.push('/')
   }
 
   return (
@@ -52,7 +55,7 @@ export default function SettingsPage({ onSubmit, title}) {
         <LabelStyled>
           Name
         </LabelStyled>
-        <input name="name" type="text" placeholder="Herr Dr. Max Mustermann"/>
+        <input name="name" type="text" placeholder="Herr Dr. Max Mustermann" />
         <LabelStyled>
           Foto
         </LabelStyled>
@@ -60,30 +63,34 @@ export default function SettingsPage({ onSubmit, title}) {
         <LabelStyled>
           Fachbereich
         </LabelStyled>
-        <input name="specialist" type="text" placeholder="Allgemeinarzt"/>
+        <input name="specialist" type="text" placeholder="Allgemeinarzt" />
         <LabelStyled>
           Sprache(n)
         </LabelStyled>
-        <input name="tags" type="text" placeholder="Deutsch Englisch Farsi"/>
+        <input name="tags" type="text" placeholder="Deutsch Englisch Farsi" />
+        <LabelStyled>
+          Beschreibung
+        </LabelStyled>
+        <textarea name="description" type="text" placeholder="füge eine Beschreibung hinzu"/>
         <LabelStyled>
           Straße/Nr.
         </LabelStyled>
-        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12"/>
+        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12" />
         <LabelStyled>
           PLZ/Ort
         </LabelStyled>
-        <input name="location" type="text" placeholder="12248 Hamburg"/>
+        <input name="location" type="text" placeholder="12248 Hamburg" />
         <LabelStyled>
           Telefon
         </LabelStyled>
-        <input name="phoneNumber" type="text" placeholder="040 76 37 474"/>
+        <input name="phoneNumber" type="text" placeholder="040 76 37 474" />
         <LabelStyled>
           E-Mail
         </LabelStyled>
-        <input name="emailaddress" type="text" placeholder="maxmustermann@gmail.de"/>
+        <input name="email" type="text" placeholder="maxmustermann@gmail.de" />
 
       <ButtonStyled>
-        Create card
+        Karte erstellen
       </ButtonStyled>
 
       </FormStyled>
@@ -99,6 +106,7 @@ const FormStyled = styled.form`
   grid-auto-rows: repeat(8, 1fr);
   padding: 20px;
   margin-top: 36px;
+  margin-bottom: 48px;
 
   > input {
     box-sizing: border-box;
@@ -110,12 +118,22 @@ const FormStyled = styled.form`
       &:hover {
         border: 1px solid #4882BB;
       }
+    }
+
+  > textarea {
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
   }
 `
 
+
+
 const LabelStyled = styled.label`
   margin-top: 15px;
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #3b3b3b;
 `
 

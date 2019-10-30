@@ -38,6 +38,7 @@ export default function Cards({
     font-weight: 300;
 
     div {
+      font-family: 'Fira Sans';
       padding: 5px 10px 10px 10px;
       margin: 5px;
       text-align: justify;
@@ -95,6 +96,7 @@ export default function Cards({
       <CardStyled>
         <h2>{name}</h2>
         <h4>{specialist}</h4>
+        <p>Mo. - Fr. 08:00 - 16:00</p>
         {renderTags()}
         <hr/>
         <pre onClick={() => toggleCollapsed()}>&#9432;</pre>
@@ -117,6 +119,37 @@ export default function Cards({
     )
   }
 }
+
+const FullCardStyled = styled.section`
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  height: auto;
+  width: auto;
+  position: relative;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 15px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
+  border-radius: 8px;
+
+  > img {
+    display: block;
+    margin: 15px auto;
+    height: 125px;
+    width: 125px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.1);
+  }
+
+  hr {
+    width: 90%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  }
+`
 
 
 const BookmarkStyled = styled(Star)`
@@ -143,13 +176,22 @@ const CardStyled = styled.div`
       font-weight: normal;
     }
 
-    > h4 {
+  > h4 {
       font-family: 'Fira Sans';
       color: #83909f;
       line-height: 1.1;
       font-size: 14px;
       font-weight: 300;
       margin: 5px 0;
+    }
+
+  > p {
+      font-family: 'Fira Sans';
+      margin: 0;
+      color: #83909f;
+      display: block;
+      font-size: 14px;
+      font-weight: normal;
     }
 
   > pre {
@@ -187,11 +229,11 @@ const LinkDeleteStyled = styled(Link)`
 `
 
 const CardButton = styled.div`
+  margin: 10px 0 0 0;
   display: inline;
 `
 
 const CardButtonLeftStyled = styled.a`
-  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -205,7 +247,6 @@ const CardButtonLeftStyled = styled.a`
 `
 
 const CardButtonRightStyled = styled.a`
-  margin-top: 10px;
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
@@ -218,33 +259,3 @@ const CardButtonRightStyled = styled.a`
   padding-top: 8px;
 `
 
-const FullCardStyled = styled.section`
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  height: auto;
-  width: auto;
-  position: relative;
-  box-sizing: border-box;
-  background-color: white;
-  margin: 15px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
-  border-radius: 8px;
-
-  > img {
-    display: block;
-    margin: 15px auto;
-    height: 125px;
-    width: 125px;
-    object-fit: cover;
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 0px 2px 0 rgba(0,0,0,0.1);
-  }
-
-  hr {
-    width: 90%;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
-  }
-`

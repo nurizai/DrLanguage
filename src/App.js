@@ -47,8 +47,8 @@ function App() {
               <input name="specialist" type="text" placeholder="Fachbereich" value={editContent.specialist} onChange={e => setEditContent({...editContent, specialist: e.target.value})} />
               <input name="tags" type="text" placeholder="Sprachen" value={editContent.tags} onChange={e => setEditContent({...editContent, tags: e.target.value})} />
               <input name="address" type="text" placeholder="Straße und Hausnummer" value={editContent.address} onChange={e => setEditContent({...editContent, address: e.target.value})} />
-              <textarea name="description" placeholder="Beschreibung ändern" value={editContent.description} onChange={e => setEditContent({...editContent, description: e.target.value})} />
               <input name="location" type="text" placeholder="Ort/PLZ" value={editContent.location} onChange={e => setEditContent({...editContent, location: e.target.value})} />
+              <textarea name="description" placeholder="Beschreibung ändern" value={editContent.description} onChange={e => setEditContent({...editContent, description: e.target.value})} />
               <input name="phoneNumber" type="text" placeholder="Telefon" value={editContent.phoneNumber} onChange={e => setEditContent({...editContent, phoneNumber: e.target.value})} />
               <input name="email" type="text" placeholder="E-mail" value={editContent.email} onChange={e => setEditContent({...editContent, email: e.target.value})} />
               <button>Speichern</button>
@@ -57,7 +57,7 @@ function App() {
         </EditModal>
         <Switch>
           <Route exact path="/" render={() => <Homepage cards={cards} onBookmarkClick={handleBookmarkClick} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} goToMap={goToMap} />} />
-          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Favoriten" filteredCards={cards.filter(card => card.isBookmarked === true)} onEditClick={handleEditClick}  />} />
+          <Route path="/bookmarked" render={() => <BookmarksPage onBookmarkClick={handleBookmarkClick} title="Favoriten" filteredCards={cards.filter(card => card.isBookmarked === true)} onEditClick={handleEditClick} goToMap={goToMap} onDeleteClick={handleDeleteClick}/>} />
           <Route path="/settings" render={() => <SettingsPage title="Ärzte hinzufügen" onSubmit={createCard} />} />
           <Route path="/map" render={() => <Map title="Karte" data={dataForMap} />} />
         </Switch>

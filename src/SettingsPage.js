@@ -73,15 +73,15 @@ export default function SettingsPage({ onSubmit, title }) {
         <LabelStyled>
           Beschreibung
         </LabelStyled>
-        <textarea name="description" type="text" placeholder="füge eine Beschreibung hinzu"/>
+        <textarea name="description" type="text" placeholder="Füge eine Beschreibung hinzu"/>
         <LabelStyled>
           Straße/Nr.
         </LabelStyled>
-        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12" />
+        <input name="address" type="text" placeholder="Musterstraße 1" />
         <LabelStyled>
           PLZ/Ort
         </LabelStyled>
-        <input name="location" type="text" placeholder="12248 Hamburg" />
+        <input name="location" type="text" placeholder="20095 Hamburg" />
         <LabelStyled>
           Telefon
         </LabelStyled>

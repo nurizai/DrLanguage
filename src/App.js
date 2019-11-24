@@ -32,7 +32,8 @@ function App() {
   })
 
   useEffect(() => {
-    getCards().then(setCards)
+    // getCards().then(setCards)
+    getCards().then(cards => setCards(cards))
   }, [])
 
   return (

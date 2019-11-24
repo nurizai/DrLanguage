@@ -13,12 +13,6 @@ export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditC
     location: ''
   })
 
-  function getSortedCards() {
-    const sortedCards = cards.slice()
-    sortedCards.sort((a, b) => a.name - b.name)
-    return sortedCards
-  }
-
   function updateFilterOptions(key, value) {
     setFilter({
       ...filter,
@@ -29,7 +23,7 @@ export default function Homepage({cards, onBookmarkClick, onDeleteClick, onEditC
   return (
     <HomepageStyled>
       <FilterBar updateFilterOptions={(key, value) => updateFilterOptions(key, value)} />
-      <CardList cards={getSortedCards()} onBookmarkClick={onBookmarkClick} onDeleteClick={onDeleteClick} onEditClick={onEditClick} filter={filter} goToMap={goToMap} />
+      <CardList cards={cards} onBookmarkClick={onBookmarkClick} onDeleteClick={onDeleteClick} onEditClick={onEditClick} filter={filter} goToMap={goToMap} />
     </HomepageStyled>
   )
 

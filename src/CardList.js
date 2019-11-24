@@ -10,6 +10,7 @@ export default function CardList({ cards, onBookmarkClick, onDeleteClick, onEdit
   const specialist = filter.specialist
   const location = filter.location
 
+  // includes gibt true oder false zurück, aber wegen Filter bedeutet das, dass er die Karten zurückgibt, wo die Kondition true ist
   const filteredCards = cards.filter(card => {
 
     let result = card

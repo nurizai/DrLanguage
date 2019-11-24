@@ -11,7 +11,9 @@ const DoctorSchema = new Schema({
   location: String,
   isBookmarked: Boolean,
   email: String,
-  phoneNumber: String
+  phoneNumber: String,
+  longitude: Number,
+  latitude: Number
 })
 
 const Doctor = mongoose.model('Doctor', DoctorSchema)

@@ -40,7 +40,9 @@ router.delete('/:id', (req, res) => {
 
 // Edit card
 router.patch('/:id', (req, res) => {
-  
+  Doctor.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(doctor => res.json(doctor))
+    .catch(err => res.json(err))
 })
 
 module.exports = router

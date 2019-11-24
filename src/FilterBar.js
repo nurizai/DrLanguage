@@ -74,6 +74,7 @@ export default function FilterBar({ updateFilterOptions }) {
   function openPopup(filterType) {
 
     // Create a set with the tags displayed in the popup depending on which FilterArea is clicked
+    // Set makes sure that elements are only included once
     const currentPopupTags = Array.from(cards.reduce((pre, acc) => {
 
       if (filterType === 'language') {
@@ -85,7 +86,8 @@ export default function FilterBar({ updateFilterOptions }) {
       }
 
       if (filterType === 'location') {
-        pre.add(acc.location.slice(6))
+        const zipCodeEndsHere = 6
+        pre.add(acc.location.slice(zipCodeEndsHere))
       }
 
       return pre

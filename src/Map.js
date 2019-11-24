@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 
 export default function Map({ title, data = { latitude: 53.551086, longitude: 9.993682 } }) {
 
-  const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN
+  const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN || 'pk.eyJ1IjoibnVyaTkyIiwiYSI6ImNrMjRsNHIzMzBnbnkzZ3J3MXd3OXB1Z3EifQ.k46K4QsDr5_y2mAlSq8HcA'
 
   const [viewport, setViewport] = useState({
     latitude: data.latitude,

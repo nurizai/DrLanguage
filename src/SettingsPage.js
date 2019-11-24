@@ -9,8 +9,10 @@ export default function SettingsPage({ onSubmit, title }) {
   const history = useHistory()
 
   const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
-  const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
-  const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
+
+  // TODO: Remove hardcoded and use .env.local file
+  const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME || 'dzxdrgtr4'
+  const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET || 'p1cwzxo8'
 
   function uploadToCloudinary(event) {
     event.preventDefault()
@@ -71,15 +73,15 @@ export default function SettingsPage({ onSubmit, title }) {
         <LabelStyled>
           Beschreibung
         </LabelStyled>
-        <textarea name="description" type="text" placeholder="füge eine Beschreibung hinzu"/>
+        <textarea name="description" type="text" placeholder="Füge eine Beschreibung hinzu"/>
         <LabelStyled>
           Straße/Nr.
         </LabelStyled>
-        <input name="address" type="text" placeholder="Max-Mustermann-Straße 12" />
+        <input name="address" type="text" placeholder="Musterstraße 1" />
         <LabelStyled>
           PLZ/Ort
         </LabelStyled>
-        <input name="location" type="text" placeholder="12248 Hamburg" />
+        <input name="location" type="text" placeholder="20095 Hamburg" />
         <LabelStyled>
           Telefon
         </LabelStyled>

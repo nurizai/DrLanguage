@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Page from './Page'
+import Page from '../common/Page'
 import MapGL from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 

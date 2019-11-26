@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import BookmarkStar from './icons/star.svg'
-import create from './icons/create.svg'
-import Home from './icons/home.svg'
-import Map from './icons/map.svg'
+import BookmarkStar from '../icons/star.svg'
+import create from '../icons/create.svg'
+import Home from '../icons/home.svg'
+import Map from '../icons/map.svg'
 
 export default function Footer() {
   return (

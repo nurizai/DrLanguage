@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Tag from './Tag'
-import { getCards } from './services'
+import { getCards } from '../utils/services'
 
 export default function FilterBar({ updateFilterOptions }) {
   const [cards, setCards] = useState([])

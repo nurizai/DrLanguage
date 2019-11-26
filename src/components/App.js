@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro'
 import Homepage from './Homepage'
 import Navigation from './Navigation'
-import { getCards, patchCard, postCard, deleteCard } from './services'
-import GlobalStyles from './GlobalStyles';
+import { getCards, patchCard, postCard, deleteCard } from '../utils/services'
+import GlobalStyles from '../common/GlobalStyles';
 import SettingsPage from './SettingsPage'
 import BookmarksPage from './BookmarksPage';
 import { Delete } from 'styled-icons/typicons/Delete'

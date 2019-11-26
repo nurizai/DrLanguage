@@ -1,6 +1,6 @@
 import React from 'react'
 import CardList from './CardList'
-import Page from './Page'
+import Page from '../common/Page'
 
 export default function BookmarksPage({ title, filteredCards, onBookmarkClick, onEditClick, goToMap, handleDeleteClick }) {
 

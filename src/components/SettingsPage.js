@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import Page from './Page'
+import Page from '../common/Page'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
